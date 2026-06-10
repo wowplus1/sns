@@ -588,6 +588,94 @@
     .keyword-badge.active .count {
       background-color: rgba(255, 255, 255, 0.2);
     }
+
+    /* 반응형 레이아웃 분기 클래스 */
+    .desktop-only {
+      display: block;
+    }
+    .mobile-only {
+      display: none;
+    }
+
+    /* 모바일 전용 포스트 카드 스타일 */
+    .mobile-post-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 1.4rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .mobile-post-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+    .mobile-post-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-bottom: 1px dashed var(--border-color);
+      padding-bottom: 0.6rem;
+    }
+    .mobile-post-author {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .mobile-post-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .mobile-post-body {
+      font-size: 0.95rem;
+      color: #333333;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .mobile-post-footer {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 0.4rem;
+    }
+    .btn-mobile-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background-color: var(--bg-dark);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      transition: all 0.2s;
+    }
+    .btn-mobile-link:hover {
+      background-color: var(--primary-light);
+      color: white;
+      border-color: var(--primary-light);
+    }
+
+    @media (max-width: 768px) {
+      .desktop-only {
+        display: none !important;
+      }
+      .mobile-only {
+        display: flex !important;
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
@@ -652,8 +740,8 @@
     </div>
   </div>
 
-  <!-- 4. 데이터베이스 원본 테이블 -->
-  <div class="table-container" style="margin-top: 1.5rem;">
+  <!-- 4. 데이터베이스 원본 테이블 (데스크톱 전용) -->
+  <div class="table-container desktop-only" style="margin-top: 1.5rem;">
     <table>
       <thead>
         <tr>
@@ -668,6 +756,11 @@
         <!-- 테이블 데이터가 렌더링되는 장소 -->
       </tbody>
     </table>
+  </div>
+
+  <!-- 4-2. 모바일용 카드 리스트 (모바일 전용) -->
+  <div class="mobile-only" id="mobile-card-list" style="margin-top: 1rem;">
+    <!-- 모바일 카드 데이터가 렌더링되는 장소 -->
   </div>
 
 </div>
@@ -824,9 +917,10 @@
     renderData();
   }
 
-  // 3. 데이터 렌더링 (테이블 목록 구성)
+  // 3. 데이터 렌더링 (테이블 및 모바일 카드 리스트 목록 구성)
   function renderData() {
     const tableBody = document.getElementById('table-body');
+    const mobileCardList = document.getElementById('mobile-card-list');
     const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
     
     // 필터링 적용 (Threads 단독 수집이므로 플랫폼 필터 생략)
@@ -839,28 +933,52 @@
 
     if (filtered.length === 0) {
       tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">매칭되는 데이터가 없습니다.</td></tr>`;
+      mobileCardList.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 2rem 0;">매칭되는 데이터가 없습니다.</div>`;
       return;
     }
 
     let tableHtml = '';
+    let mobileHtml = '';
 
     filtered.forEach(post => {
+      // 본문이 너무 길면 데스크톱 테이블에서 줄여서 표시 (가독성 유지)
       const shortContent = post.content.length > 50 ? post.content.substring(0, 50) + '...' : post.content;
       
+      // A. 데스크톱용 테이블 행 렌더링
       tableHtml += `
         <tr>
           <td><span class="badge badge-threads">Threads</span></td>
           <td><b>@${post.author}</b></td>
-          <td style="color: var(--text-muted); font-size:0.85rem;">${post.created_at}</td>
+          <td style="color: var(--text-muted); font-size:0.85rem; white-space: nowrap;">${post.created_at}</td>
           <td>${shortContent}</td>
-          <td>
+          <td style="white-space: nowrap;">
             <a href="${post.url}" target="_blank" style="color: var(--primary); font-weight:700; text-decoration:none;">원본보기</a>
           </td>
         </tr>
       `;
+
+      // B. 모바일용 포스트 카드 렌더링 (본문 내용 줄바꿈 완벽 유지, 터치 버튼 영역 확보)
+      mobileHtml += `
+        <div class="mobile-post-card">
+          <div class="mobile-post-header">
+            <div class="mobile-post-author">
+              <span class="badge badge-threads">Threads</span>
+              <b>@${post.author}</b>
+            </div>
+            <div class="mobile-post-date">${post.created_at}</div>
+          </div>
+          <div class="mobile-post-body">${post.content}</div>
+          <div class="mobile-post-footer">
+            <a href="${post.url}" target="_blank" class="btn-mobile-link">
+              <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> 원본보기
+            </a>
+          </div>
+        </div>
+      `;
     });
 
     tableBody.innerHTML = tableHtml;
+    mobileCardList.innerHTML = mobileHtml;
     
     // Lucide 아이콘 다시 렌더링
     lucide.createIcons();
