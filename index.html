@@ -810,11 +810,14 @@
     "많이", "정말", "매우", "거의", "살짝", "조금", "바로", "그와중에", "우리", "여기",
     "저기", "거기", "그것", "이것", "저것", "어디", "어떻게", "그리고", "하지만", "그런데",
     "그래서", "또는", "혹은", "으로", "에서", "이거", "그거", "저거", "하고", "이랑",
-    "입니다", "있다", "없다", "하다", "되다", "보다", "먹다", "가다", "오다", "추천",
-    "맛집", "숙소", "여행", "제주", "제주도", "쓰레드", "threads", "포스트", "게시글",
+    "입니다", "있다", "없다", "하다", "되다", "보다", "먹다", "가다", "오다",
+    "맛집", "여행", "제주", "제주도", "쓰레드", "threads", "포스트", "게시글",
     "한라산", "제주여행", "제주도여행", "사람", "하는", "했다", "했음", "하고싶다", "갔다",
     "왔다", "보고", "하구", "진짜로", "있는", "하면", "원래", "제일", "가장", "어제", "지금"
   ]);
+
+  // 사용자가 정의한 비즈니스 중요 핵심 키워드 목록 (언급 랭킹에 가중 우대 반영)
+  const IMPORTANT_WORDS = new Set(["숙소", "숙박", "추천"]);
 
   // 1. JSON 파일 데이터 로드
   async function loadData() {
@@ -879,12 +882,16 @@
     rawPosts.forEach(post => {
       if (!post.content) return;
 
-      // A. 해시태그 분석 (#제주여행 등) -> 중요하므로 가중치 1.5 부여
+      // A. 해시태그 분석 (#제주여행 등) -> 중요하므로 가중치 1.5 부여 (중요단어 해시태그 시 +0.5 우대)
       const hashtags = post.content.match(/#[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9_]+/g) || [];
       hashtags.forEach(tag => {
         const cleanTag = tag.substring(1).trim().toLowerCase(); // # 제거
         if (cleanTag.length >= 2 && !STOP_WORDS.has(cleanTag)) {
-          keywordCount[cleanTag] = (keywordCount[cleanTag] || 0) + 1.5;
+          let weight = 1.5;
+          if (IMPORTANT_WORDS.has(cleanTag)) {
+            weight += 0.5;
+          }
+          keywordCount[cleanTag] = (keywordCount[cleanTag] || 0) + weight;
         }
       });
 
@@ -902,7 +909,11 @@
         cleanWord = cleanWord.replace(/(은|는|이|가|을|를|에|에서|의|로|으로|과|와|도|만|부터|까지|하고|이랑|랑|고|며|하며|다|네요|입니다|입니까|해서|했다|해요|합니다|였지만|이지만|가지|들|한|된)$/, '');
 
         if (cleanWord.length >= 2 && !STOP_WORDS.has(cleanWord)) {
-          keywordCount[cleanWord] = (keywordCount[cleanWord] || 0) + 1;
+          let weight = 1;
+          if (IMPORTANT_WORDS.has(cleanWord)) {
+            weight = 1.5; // 중요 키워드 가중치 1.5배 가산
+          }
+          keywordCount[cleanWord] = (keywordCount[cleanWord] || 0) + weight;
         }
       });
     });
