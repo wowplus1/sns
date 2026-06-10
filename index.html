@@ -914,16 +914,25 @@
     rawPosts.forEach(post => {
       if (!post.content) return;
 
+      // [조사/어미 결합 예외 해결] 본문 포함 여부(includes)로 정밀하게 계산하여 조사 파편 누락을 차단
+      ["숙소", "숙박", "추천"].forEach(word => {
+        if (post.content.includes(word)) {
+          // #숙소 등 해시태그 형태로 본문에 결합된 경우 추가 가중치(+0.5) 가산
+          const hasHash = post.content.includes(`#${word}`);
+          importantCount[word] += hasHash ? 1.5 : 1;
+        }
+      });
+
       // A. 해시태그 분석 (#제주여행 등) -> 일반 키워드 가중치 1.5 부여
       const hashtags = post.content.match(/#[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9_]+/g) || [];
       hashtags.forEach(tag => {
         const cleanTag = tag.substring(1).trim().toLowerCase(); // # 제거
         if (cleanTag.length >= 2 && !STOP_WORDS.has(cleanTag)) {
           if (importantCount.hasOwnProperty(cleanTag)) {
-            importantCount[cleanTag] += 1.5; // 관리용 키워드도 해시태그일 땐 1.5배 가산
-          } else {
-            keywordCount[cleanTag] = (keywordCount[cleanTag] || 0) + 1.5;
+            // 이미 위에서 includes 방식으로 정밀 수집했으므로 일반 키워드 랭킹에서는 패스
+            return;
           }
+          keywordCount[cleanTag] = (keywordCount[cleanTag] || 0) + 1.5;
         }
       });
 
@@ -942,10 +951,10 @@
 
         if (cleanWord.length >= 2 && !STOP_WORDS.has(cleanWord)) {
           if (importantCount.hasOwnProperty(cleanWord)) {
-            importantCount[cleanWord] += 1;
-          } else {
-            keywordCount[cleanWord] = (keywordCount[cleanWord] || 0) + 1;
+            // 이미 위에서 includes 방식으로 정밀 수집했으므로 일반 키워드 랭킹에서는 패스
+            return;
           }
+          keywordCount[cleanWord] = (keywordCount[cleanWord] || 0) + 1;
         }
       });
     });
@@ -980,8 +989,9 @@
     ["숙소", "숙박", "추천"].forEach(word => {
       const count = Math.round(importantCount[word] || 0);
       const isActive = activeKeyword === word;
+      // color 스타일을 ${isActive ? 'white' : '#b25829'}로 수정하여 active 상태일 때 글자가 배경색과 겹쳐 숨겨지던 버그 패치
       impHtml += `
-        <button class="keyword-badge ${isActive ? 'active' : ''}" style="border-color: #d6875b; color: #b25829; background-color: ${isActive ? '#b25829' : 'rgba(214, 135, 91, 0.08)'};" onclick="toggleKeywordFilter('${word}')">
+        <button class="keyword-badge ${isActive ? 'active' : ''}" style="border-color: #d6875b; color: ${isActive ? 'white' : '#b25829'}; background-color: ${isActive ? '#b25829' : 'rgba(214, 135, 91, 0.08)'};" onclick="toggleKeywordFilter('${word}')">
           <span>📌 ${word}</span>
           <span class="count" style="background-color: ${isActive ? 'rgba(255,255,255,0.2)' : 'rgba(178, 88, 41, 0.15)'}; color: ${isActive ? 'white' : '#b25829'};">${count}</span>
         </button>
