@@ -700,7 +700,7 @@
           </button>
         </div>
         <div id="last-update-time" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 0.35rem;">
-          <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 조회 시각: 로딩 중...
+          <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 데이터 수집 시각: 로딩 중...
         </div>
       </div>
     </div>
@@ -834,19 +834,27 @@
     updateLastCheckedTime();
   }
 
-  // 1-1. 마지막 조회 시각 포맷팅 및 업데이트
+  // 1-1. 수집된 글 중 가장 최신 글의 수집 시각(데이터 최종 갱신 시각) 표시
   function updateLastCheckedTime() {
-    const now = new Date();
-    const yyyy = now.getFullYear();
-    const mm = String(now.getMonth() + 1).padStart(2, '0');
-    const dd = String(now.getDate()).padStart(2, '0');
-    const hh = String(now.getHours()).padStart(2, '0');
-    const min = String(now.getMinutes()).padStart(2, '0');
-    const ss = String(now.getSeconds()).padStart(2, '0');
+    if (rawPosts && rawPosts.length > 0) {
+      // created_at 기준으로 내림차순 정렬하여 가장 최근 수집 일시 확보
+      const dates = rawPosts
+        .map(p => p.created_at)
+        .filter(d => d)
+        .sort((a, b) => b.localeCompare(a));
+      
+      if (dates.length > 0) {
+        const lastDataTime = dates[0];
+        document.getElementById('last-update-time').innerHTML = `
+          <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 데이터 수집 시각: ${lastDataTime}
+        `;
+        lucide.createIcons();
+        return;
+      }
+    }
     
-    const formatted = `${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
     document.getElementById('last-update-time').innerHTML = `
-      <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 조회 시각: ${formatted}
+      <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 데이터 수집 시각: 정보 없음
     `;
     lucide.createIcons();
   }
