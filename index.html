@@ -548,6 +548,46 @@
         font-size: 0.8rem;
       }
     }
+
+    /* 키워드 분석 배지 스타일 */
+    .keyword-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: var(--font-family);
+    }
+    .keyword-badge:hover {
+      background-color: var(--primary-light);
+      color: white;
+      border-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+    .keyword-badge.active {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 4px 10px rgba(67, 91, 65, 0.2);
+    }
+    .keyword-badge .count {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      background-color: rgba(0, 0, 0, 0.08);
+      padding: 0.1rem 0.4rem;
+      border-radius: 10px;
+      line-height: 1;
+    }
+    .keyword-badge.active .count {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
   </style>
 </head>
 <body>
@@ -593,7 +633,16 @@
         <div class="metric-value" id="val-today">0 건</div>
       </div>
     </div>
+  </div>
 
+  <!-- 3. 실시간 언급 키워드 TOP 10 카드 -->
+  <div class="keyword-card" style="background: var(--card-bg); border-radius: 16px; padding: 1.8rem; border: 1px solid var(--border-color); box-shadow: var(--shadow); margin-bottom: 2rem;">
+    <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+      <i data-lucide="hash" style="width: 20px; height: 20px; color: var(--primary-light);"></i> 누적 본문 키워드 분석 (언급순 TOP 10)
+    </h3>
+    <div id="keyword-list" style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+      <div style="color: var(--text-muted); font-size: 0.9rem;">데이터를 불러오는 중입니다...</div>
+    </div>
   </div>
 
   <div class="control-panel">
@@ -651,6 +700,19 @@
   ];
 
   let rawPosts = [];
+  let activeKeyword = null;
+
+  // 의미가 무의미하거나 일반적인 조사와 부사들을 필터링하기 위한 불용어 목록
+  const STOP_WORDS = new Set([
+    "진짜", "너무", "그냥", "일단", "올해", "같이", "이번", "다시", "오늘", "내일",
+    "많이", "정말", "매우", "거의", "살짝", "조금", "바로", "그와중에", "우리", "여기",
+    "저기", "거기", "그것", "이것", "저것", "어디", "어떻게", "그리고", "하지만", "그런데",
+    "그래서", "또는", "혹은", "으로", "에서", "이거", "그거", "저거", "하고", "이랑",
+    "입니다", "있다", "없다", "하다", "되다", "보다", "먹다", "가다", "오다", "추천",
+    "맛집", "숙소", "여행", "제주", "제주도", "쓰레드", "threads", "포스트", "게시글",
+    "한라산", "제주여행", "제주도여행", "사람", "하는", "했다", "했음", "하고싶다", "갔다",
+    "왔다", "보고", "하구", "진짜로", "있는", "하면", "원래", "제일", "가장", "어제", "지금"
+  ]);
 
   // 1. JSON 파일 데이터 로드
   async function loadData() {
@@ -668,6 +730,7 @@
     }
     
     updateMetrics();
+    updateKeywords();
     renderData();
   }
 
@@ -679,6 +742,86 @@
     const todayStr = new Date().toISOString().substring(0, 10);
     const todayCount = rawPosts.filter(p => p.created_at && p.created_at.startsWith(todayStr)).length;
     document.getElementById('val-today').innerText = `${todayCount} 건`;
+  }
+
+  // 2-1. 본문 형태소/명사 빈도수 정렬 및 키워드 리스트 업데이트
+  function updateKeywords() {
+    const keywordCount = {};
+    
+    rawPosts.forEach(post => {
+      if (!post.content) return;
+
+      // A. 해시태그 분석 (#제주여행 등) -> 중요하므로 가중치 1.5 부여
+      const hashtags = post.content.match(/#[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9_]+/g) || [];
+      hashtags.forEach(tag => {
+        const cleanTag = tag.substring(1).trim().toLowerCase(); // # 제거
+        if (cleanTag.length >= 2 && !STOP_WORDS.has(cleanTag)) {
+          keywordCount[cleanTag] = (keywordCount[cleanTag] || 0) + 1.5;
+        }
+      });
+
+      // B. 일반 단어 추출 (한글, 영어, 숫자 위주)
+      // 특수문자나 해시태그를 제거하고 공백 처리
+      const contentWithoutHash = post.content.replace(/#[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9_]+/g, '');
+      const cleanText = contentWithoutHash.replace(/[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9\s]/g, ' ');
+      const words = cleanText.split(/\s+/);
+
+      words.forEach(word => {
+        let cleanWord = word.trim().toLowerCase();
+        if (cleanWord.length < 2) return;
+
+        // 자주 쓰이는 조사와 어미 잘라내기 (형태소 분석기 대용 스테머)
+        cleanWord = cleanWord.replace(/(은|는|이|가|을|를|에|에서|의|로|으로|과|와|도|만|부터|까지|하고|이랑|랑|고|며|하며|다|네요|입니다|입니까|해서|했다|해요|합니다|였지만|이지만|가지|들|한|된)$/, '');
+
+        if (cleanWord.length >= 2 && !STOP_WORDS.has(cleanWord)) {
+          keywordCount[cleanWord] = (keywordCount[cleanWord] || 0) + 1;
+        }
+      });
+    });
+
+    // 키워드 정렬 (내림차순)
+    const sortedKeywords = Object.entries(keywordCount)
+      .map(([word, count]) => ({ word, count: Math.round(count) }))
+      .filter(item => item.count >= 1)
+      .sort((a, b) => b.count - a.count || a.word.localeCompare(b.word))
+      .slice(0, 10);
+
+    const keywordListContainer = document.getElementById('keyword-list');
+    if (sortedKeywords.length === 0) {
+      keywordListContainer.innerHTML = '<div style="color: var(--text-muted); font-size: 0.9rem;">수집된 본문에서 분석된 주요 키워드가 없습니다.</div>';
+      return;
+    }
+
+    let html = '';
+    sortedKeywords.forEach(item => {
+      const isActive = activeKeyword === item.word;
+      html += `
+        <button class="keyword-badge ${isActive ? 'active' : ''}" onclick="toggleKeywordFilter('${item.word.replace(/'/g, "\\'")}')">
+          <span># ${item.word}</span>
+          <span class="count">${item.count}</span>
+        </button>
+      `;
+    });
+    
+    keywordListContainer.innerHTML = html;
+  }
+
+  // 2-2. 키워드 클릭 시 검색 필터 토글
+  function toggleKeywordFilter(word) {
+    const searchInput = document.getElementById('search-input');
+    
+    if (activeKeyword === word) {
+      activeKeyword = null;
+      searchInput.value = '';
+      showToast('❌ 키워드 필터가 해제되었습니다.');
+    } else {
+      activeKeyword = word;
+      searchInput.value = word;
+      showToast(`🔍 '#${word}' 키워드로 본문을 필터링합니다.`);
+    }
+    
+    updateKeywords();
+    renderData();
   }
 
   // 3. 데이터 렌더링 (테이블 목록 구성)
@@ -725,6 +868,12 @@
 
   // 4. 필터링 인풋 입력 감지
   function filterData() {
+    const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
+    // 사용자가 입력한 검색어가 활성화된 키워드 칩과 다르면 activeKeyword 해제 후 갱신
+    if (activeKeyword && searchQuery !== activeKeyword.toLowerCase()) {
+      activeKeyword = null;
+      updateKeywords();
+    }
     renderData();
   }
 
