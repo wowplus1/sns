@@ -442,6 +442,7 @@
         display: flex;
         flex-direction: column;
         gap: 0.6rem;
+        align-items: center;
       }
 
       .header-actions button,
@@ -689,13 +690,18 @@
         <h1 id="main-title">✈️ 제주여행 Threads 모니터링 대시보드</h1>
         <div class="subtitle">Threads(쓰레드)에서 수집된 최신 글을 모니터링합니다.</div>
       </div>
-      <div class="header-actions" style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
-        <button class="btn btn-threads" onclick="loadData(); showToast('🔄 최신 수집 데이터를 화면에 새로 불러왔습니다.');">
-          <i data-lucide="refresh-cw" style="width: 16px; height: 16px;"></i> 대시보드 새로고침
-        </button>
-        <button class="btn btn-outline" onclick="exportToCSV()">
-          <i data-lucide="download" style="width: 16px; height: 16px;"></i> 전체 데이터 CSV 다운로드
-        </button>
+      <div class="header-actions" style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem;">
+        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+          <button class="btn btn-threads" onclick="loadData(); showToast('🔄 최신 수집 데이터를 화면에 새로 불러왔습니다.');">
+            <i data-lucide="refresh-cw" style="width: 16px; height: 16px;"></i> 대시보드 새로고침
+          </button>
+          <button class="btn btn-outline" onclick="exportToCSV()">
+            <i data-lucide="download" style="width: 16px; height: 16px;"></i> 전체 데이터 CSV 다운로드
+          </button>
+        </div>
+        <div id="last-update-time" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 0.35rem;">
+          <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 조회 시각: 로딩 중...
+        </div>
       </div>
     </div>
   </header>
@@ -825,6 +831,24 @@
     updateMetrics();
     updateKeywords();
     renderData();
+    updateLastCheckedTime();
+  }
+
+  // 1-1. 마지막 조회 시각 포맷팅 및 업데이트
+  function updateLastCheckedTime() {
+    const now = new Date();
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
+    const hh = String(now.getHours()).padStart(2, '0');
+    const min = String(now.getMinutes()).padStart(2, '0');
+    const ss = String(now.getSeconds()).padStart(2, '0');
+    
+    const formatted = `${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
+    document.getElementById('last-update-time').innerHTML = `
+      <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 조회 시각: ${formatted}
+    `;
+    lucide.createIcons();
   }
 
   // 2. 상단 통계 지표 업데이트
