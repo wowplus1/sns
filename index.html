@@ -671,6 +671,11 @@
       border-color: var(--primary-light);
     }
 
+    .keyword-card-right {
+      border-left: 1px solid var(--border-color);
+      padding-left: 2rem;
+    }
+
     @media (max-width: 768px) {
       .desktop-only {
         display: none !important;
@@ -678,6 +683,13 @@
       .mobile-only {
         display: flex !important;
         flex-direction: column;
+      }
+      .keyword-card-right {
+        border-left: none !important;
+        padding-left: 0 !important;
+        border-top: 1px dashed var(--border-color);
+        padding-top: 1.5rem;
+        margin-top: 0.5rem;
       }
     }
   </style>
@@ -732,13 +744,26 @@
     </div>
   </div>
 
-  <!-- 3. 실시간 언급 키워드 TOP 10 카드 -->
-  <div class="keyword-card" style="background: var(--card-bg); border-radius: 16px; padding: 1.8rem; border: 1px solid var(--border-color); box-shadow: var(--shadow); margin-bottom: 2rem;">
-    <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
-      <i data-lucide="hash" style="width: 20px; height: 20px; color: var(--primary-light);"></i> 누적 본문 키워드 분석 (언급순 TOP 10)
-    </h3>
-    <div id="keyword-list" style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
-      <div style="color: var(--text-muted); font-size: 0.9rem;">데이터를 불러오는 중입니다...</div>
+  <!-- 3. 실시간 언급 키워드 분석 카드 (2열 배치) -->
+  <div class="keyword-card" style="background: var(--card-bg); border-radius: 16px; padding: 1.8rem; border: 1px solid var(--border-color); box-shadow: var(--shadow); margin-bottom: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+    <!-- 왼쪽: 누적 언급 키워드 TOP 10 -->
+    <div>
+      <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+        <i data-lucide="trending-up" style="width: 20px; height: 20px; color: var(--primary-light);"></i> 누적 언급 키워드 (TOP 10)
+      </h3>
+      <div id="keyword-list" style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+        <div style="color: var(--text-muted); font-size: 0.9rem;">데이터를 불러오는 중입니다...</div>
+      </div>
+    </div>
+    
+    <!-- 오른쪽: 고정 관리용 지정 키워드 모니터링 -->
+    <div class="keyword-card-right">
+      <h3 style="font-size: 1.1rem; font-weight: 700; color: #b25829; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+        <i data-lucide="bookmark-check" style="width: 20px; height: 20px; color: #d6875b;"></i> 📌 관리용 지정 키워드
+      </h3>
+      <div id="important-keyword-list" style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+        <div style="color: var(--text-muted); font-size: 0.9rem;">데이터를 불러오는 중입니다...</div>
+      </div>
     </div>
   </div>
 
@@ -879,19 +904,26 @@
   function updateKeywords() {
     const keywordCount = {};
     
+    // 고정 관리용 키워드 카운터 초기화
+    const importantCount = {
+      "숙소": 0,
+      "숙박": 0,
+      "추천": 0
+    };
+    
     rawPosts.forEach(post => {
       if (!post.content) return;
 
-      // A. 해시태그 분석 (#제주여행 등) -> 중요하므로 가중치 1.5 부여 (중요단어 해시태그 시 +0.5 우대)
+      // A. 해시태그 분석 (#제주여행 등) -> 일반 키워드 가중치 1.5 부여
       const hashtags = post.content.match(/#[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9_]+/g) || [];
       hashtags.forEach(tag => {
         const cleanTag = tag.substring(1).trim().toLowerCase(); // # 제거
         if (cleanTag.length >= 2 && !STOP_WORDS.has(cleanTag)) {
-          let weight = 1.5;
-          if (IMPORTANT_WORDS.has(cleanTag)) {
-            weight += 0.5;
+          if (importantCount.hasOwnProperty(cleanTag)) {
+            importantCount[cleanTag] += 1.5; // 관리용 키워드도 해시태그일 땐 1.5배 가산
+          } else {
+            keywordCount[cleanTag] = (keywordCount[cleanTag] || 0) + 1.5;
           }
-          keywordCount[cleanTag] = (keywordCount[cleanTag] || 0) + weight;
         }
       });
 
@@ -909,16 +941,16 @@
         cleanWord = cleanWord.replace(/(은|는|이|가|을|를|에|에서|의|로|으로|과|와|도|만|부터|까지|하고|이랑|랑|고|며|하며|다|네요|입니다|입니까|해서|했다|해요|합니다|였지만|이지만|가지|들|한|된)$/, '');
 
         if (cleanWord.length >= 2 && !STOP_WORDS.has(cleanWord)) {
-          let weight = 1;
-          if (IMPORTANT_WORDS.has(cleanWord)) {
-            weight = 1.5; // 중요 키워드 가중치 1.5배 가산
+          if (importantCount.hasOwnProperty(cleanWord)) {
+            importantCount[cleanWord] += 1;
+          } else {
+            keywordCount[cleanWord] = (keywordCount[cleanWord] || 0) + 1;
           }
-          keywordCount[cleanWord] = (keywordCount[cleanWord] || 0) + weight;
         }
       });
     });
 
-    // 키워드 정렬 (내림차순)
+    // 1) 일반 언급 키워드 정렬 (내림차순 TOP 10) - 관리용 키워드는 제외됨
     const sortedKeywords = Object.entries(keywordCount)
       .map(([word, count]) => ({ word, count: Math.round(count) }))
       .filter(item => item.count >= 1)
@@ -928,21 +960,34 @@
     const keywordListContainer = document.getElementById('keyword-list');
     if (sortedKeywords.length === 0) {
       keywordListContainer.innerHTML = '<div style="color: var(--text-muted); font-size: 0.9rem;">수집된 본문에서 분석된 주요 키워드가 없습니다.</div>';
-      return;
+    } else {
+      let html = '';
+      sortedKeywords.forEach(item => {
+        const isActive = activeKeyword === item.word;
+        html += `
+          <button class="keyword-badge ${isActive ? 'active' : ''}" onclick="toggleKeywordFilter('${item.word.replace(/'/g, "\\'")}')">
+            <span># ${item.word}</span>
+            <span class="count">${item.count}</span>
+          </button>
+        `;
+      });
+      keywordListContainer.innerHTML = html;
     }
 
-    let html = '';
-    sortedKeywords.forEach(item => {
-      const isActive = activeKeyword === item.word;
-      html += `
-        <button class="keyword-badge ${isActive ? 'active' : ''}" onclick="toggleKeywordFilter('${item.word.replace(/'/g, "\\'")}')">
-          <span># ${item.word}</span>
-          <span class="count">${item.count}</span>
+    // 2) 고정 관리용 지정 키워드 렌더링 (숙소, 숙박, 추천)
+    const importantListContainer = document.getElementById('important-keyword-list');
+    let impHtml = '';
+    ["숙소", "숙박", "추천"].forEach(word => {
+      const count = Math.round(importantCount[word] || 0);
+      const isActive = activeKeyword === word;
+      impHtml += `
+        <button class="keyword-badge ${isActive ? 'active' : ''}" style="border-color: #d6875b; color: #b25829; background-color: ${isActive ? '#b25829' : 'rgba(214, 135, 91, 0.08)'};" onclick="toggleKeywordFilter('${word}')">
+          <span>📌 ${word}</span>
+          <span class="count" style="background-color: ${isActive ? 'rgba(255,255,255,0.2)' : 'rgba(178, 88, 41, 0.15)'}; color: ${isActive ? 'white' : '#b25829'};">${count}</span>
         </button>
       `;
     });
-    
-    keywordListContainer.innerHTML = html;
+    importantListContainer.innerHTML = impHtml;
   }
 
   // 2-2. 키워드 클릭 시 검색 필터 토글
