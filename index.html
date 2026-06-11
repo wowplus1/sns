@@ -847,8 +847,8 @@
   // 1. JSON 파일 데이터 로드
   async function loadData() {
     try {
-      // data.json fetch 시도
-      const response = await fetch('data.json');
+      // data.json fetch 시도 (강제 캐시 무력화 파라미터 적용)
+      const response = await fetch(`data.json?t=${new Date().getTime()}`, { cache: 'no-store' });
       if (!response.ok) {
         throw new Error('data.json 파일 응답 오류');
       }
