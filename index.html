@@ -356,6 +356,11 @@
       background-color: var(--bg-dark);
       color: var(--text-main);
     }
+    .btn-outline.active {
+      background-color: #d6875b !important;
+      color: white !important;
+      border-color: #d6875b !important;
+    }
 
 
     /* 8. 데이터베이스 테이블 뷰 */
@@ -795,6 +800,11 @@
       <i data-lucide="search"></i>
       <input type="text" id="search-input" oninput="filterData()" placeholder="본문 내용 또는 작성자 검색...">
     </div>
+    <div class="filter-box" style="display: flex; align-items: center; gap: 0.5rem;">
+      <button id="btn-time-filter" class="btn btn-outline" style="border-color: #d6875b; color: #b25829; display: inline-flex; align-items: center; gap: 0.25rem;" onclick="toggleTimeFilter()">
+        <i data-lucide="filter" style="width: 14px; height: 14px;"></i> 최근 3시간 글만 보기
+      </button>
+    </div>
   </div>
 
   <!-- 4. 데이터베이스 원본 테이블 (데스크톱 전용) -->
@@ -851,6 +861,7 @@
 
   let rawPosts = [];
   let activeKeyword = null;
+  let filter3Hours = false;
 
   // 의미가 무의미하거나 일반적인 조사와 부사들을 필터링하기 위한 불용어 목록
   const STOP_WORDS = new Set([
@@ -1061,10 +1072,28 @@
     
     // 필터링 적용 (Threads 단독 수집이므로 플랫폼 필터 생략)
     const filtered = rawPosts.filter(post => {
+      // 1. 검색어 필터링
       const matchSearch = (!searchQuery || 
                            post.content.toLowerCase().includes(searchQuery) || 
                            post.author.toLowerCase().includes(searchQuery));
-      return matchSearch;
+      
+      if (!matchSearch) return false;
+
+      // 2. 최근 3시간 필터링
+      if (filter3Hours && post.created_at) {
+        try {
+          // 윈도우/사파리 날짜 호환성을 위해 하이픈(-)을 슬래시(/)로 변경
+          const postTime = new Date(post.created_at.replace(/-/g, '/')).getTime();
+          const diffHours = (Date.now() - postTime) / (1000 * 60 * 60);
+          if (diffHours > 3) {
+            return false;
+          }
+        } catch (e) {
+          // 파싱 에러 시 필터 무시하고 노출
+        }
+      }
+
+      return true;
     });
 
     if (filtered.length === 0) {
@@ -1307,6 +1336,20 @@
       // Lucide 아이콘 다시 렌더링
       lucide.createIcons();
     }
+  }
+
+  // 3시간 이내 최신글 시간 필터 토글
+  function toggleTimeFilter() {
+    filter3Hours = !filter3Hours;
+    const btn = document.getElementById('btn-time-filter');
+    if (filter3Hours) {
+      btn.classList.add('active');
+      showToast("🕒 최근 3시간 이내에 수집/작성된 글만 모아봅니다.");
+    } else {
+      btn.classList.remove('active');
+      showToast("🔓 시간 필터가 해제되었습니다.");
+    }
+    renderData();
   }
 
   // 화면 기동 시 로딩 시작
