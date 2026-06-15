@@ -325,6 +325,20 @@
       background-color: var(--primary-hover);
     }
 
+    .btn-instagram {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: white;
+    }
+    .btn-instagram:hover {
+      opacity: 0.9;
+    }
+    .btn-instagram:disabled {
+      background: #cccccc !important;
+      color: #666666 !important;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
     .btn-naver {
       background-color: var(--naver-green);
       color: white;
@@ -390,6 +404,7 @@
 
     .badge-threads { background-color: rgba(139, 168, 136, 0.15); color: var(--primary); }
     .badge-naver { background-color: rgba(3, 199, 90, 0.12); color: var(--naver-green); }
+    .badge-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
 
     /* 9. 토스트 메세지 알림 */
     .toast {
@@ -702,11 +717,14 @@
   <header>
     <div class="title-row">
       <div>
-        <h1 id="main-title">✈️ 제주여행 Threads</h1>
-        <div class="subtitle">Threads(쓰레드)에서 수집된 최신 글을 모니터링합니다.</div>
+        <h1 id="main-title">✈️ 제주여행 SNS 모니터링</h1>
+        <div class="subtitle">Threads 및 Instagram에서 수집된 최신 글을 모니터링합니다.</div>
       </div>
       <div class="header-actions" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
         <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+          <button id="btn-insta-crawl" class="btn btn-instagram" onclick="crawlInstagram()">
+            <i data-lucide="instagram" style="width: 16px; height: 16px;"></i> 인스타그램 수집
+          </button>
           <button class="btn btn-threads" onclick="loadData(); showToast('🔄 최신 수집 데이터를 화면에 새로 불러왔습니다.');">
             <i data-lucide="refresh-cw" style="width: 16px; height: 16px;"></i> 대시보드 새로고침
           </button>
@@ -758,8 +776,13 @@
     
     <!-- 오른쪽: 고정 관리용 지정 키워드 모니터링 -->
     <div class="keyword-card-right">
-      <h3 style="font-size: 1.1rem; font-weight: 700; color: #b25829; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
-        <i data-lucide="bookmark-check" style="width: 20px; height: 20px; color: #d6875b;"></i> 📌 관리용 지정 키워드
+      <h3 style="font-size: 1.1rem; font-weight: 700; color: #b25829; margin-bottom: 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; width: 100%;">
+        <span style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          <i data-lucide="bookmark-check" style="width: 20px; height: 20px; color: #d6875b;"></i> 📌 관리용 지정 키워드
+        </span>
+        <button class="btn btn-outline" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-color: #d6875b; color: #b25829; height: auto; display: inline-flex; align-items: center; gap: 0.25rem;" onclick="addImportantWord()">
+          <i data-lucide="plus" style="width: 12px; height: 12px;"></i> 추가
+        </button>
       </h3>
       <div id="important-keyword-list" style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
         <div style="color: var(--text-muted); font-size: 0.9rem;">데이터를 불러오는 중입니다...</div>
@@ -841,8 +864,21 @@
     "왔다", "보고", "하구", "진짜로", "있는", "하면", "원래", "제일", "가장", "어제", "지금"
   ]);
 
-  // 사용자가 정의한 비즈니스 중요 핵심 키워드 목록 (언급 랭킹에 가중 우대 반영)
-  const IMPORTANT_WORDS = new Set(["숙소", "숙박", "추천"]);
+  // 사용자가 정의한 비즈니스 중요 핵심 키워드 목록 (LocalStorage 기반으로 관리)
+  let IMPORTANT_WORDS = ["숙소", "숙박", "추천"];
+  function loadImportantWords() {
+    const saved = localStorage.getItem('important_keywords');
+    if (saved) {
+      try {
+        IMPORTANT_WORDS = JSON.parse(saved);
+      } catch (e) {
+        IMPORTANT_WORDS = ["숙소", "숙박", "추천"];
+      }
+    } else {
+      localStorage.setItem('important_keywords', JSON.stringify(IMPORTANT_WORDS));
+    }
+  }
+  loadImportantWords();
 
   // 1. JSON 파일 데이터 로드
   async function loadData() {
@@ -905,17 +941,16 @@
     const keywordCount = {};
     
     // 고정 관리용 키워드 카운터 초기화
-    const importantCount = {
-      "숙소": 0,
-      "숙박": 0,
-      "추천": 0
-    };
+    const importantCount = {};
+    IMPORTANT_WORDS.forEach(word => {
+      importantCount[word] = 0;
+    });
     
     rawPosts.forEach(post => {
       if (!post.content) return;
 
       // [조사/어미 결합 예외 해결] 본문 포함 여부(includes)로 정밀하게 계산하여 조사 파편 누락을 차단
-      ["숙소", "숙박", "추천"].forEach(word => {
+      IMPORTANT_WORDS.forEach(word => {
         if (post.content.includes(word)) {
           // #숙소 등 해시태그 형태로 본문에 결합된 경우 추가 가중치(+0.5) 가산
           const hasHash = post.content.includes(`#${word}`);
@@ -983,17 +1018,17 @@
       keywordListContainer.innerHTML = html;
     }
 
-    // 2) 고정 관리용 지정 키워드 렌더링 (숙소, 숙박, 추천)
+    // 2) 고정 관리용 지정 키워드 렌더링
     const importantListContainer = document.getElementById('important-keyword-list');
     let impHtml = '';
-    ["숙소", "숙박", "추천"].forEach(word => {
+    IMPORTANT_WORDS.forEach(word => {
       const count = Math.round(importantCount[word] || 0);
       const isActive = activeKeyword === word;
-      // color 스타일을 ${isActive ? 'white' : '#b25829'}로 수정하여 active 상태일 때 글자가 배경색과 겹쳐 숨겨지던 버그 패치
       impHtml += `
-        <button class="keyword-badge ${isActive ? 'active' : ''}" style="border-color: #d6875b; color: ${isActive ? 'white' : '#b25829'}; background-color: ${isActive ? '#b25829' : 'rgba(214, 135, 91, 0.08)'};" onclick="toggleKeywordFilter('${word}')">
+        <button class="keyword-badge ${isActive ? 'active' : ''}" style="border-color: #d6875b; color: ${isActive ? 'white' : '#b25829'}; background-color: ${isActive ? '#b25829' : 'rgba(214, 135, 91, 0.08)'}; display: inline-flex; align-items: center; gap: 0.4rem;" onclick="toggleKeywordFilter('${word}')">
           <span>📌 ${word}</span>
           <span class="count" style="background-color: ${isActive ? 'rgba(255,255,255,0.2)' : 'rgba(178, 88, 41, 0.15)'}; color: ${isActive ? 'white' : '#b25829'};">${count}</span>
+          <span class="delete-btn" style="margin-left: 2px; font-size: 1.1rem; color: ${isActive ? 'white' : '#b25829'}; opacity: 0.6; cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.6" onclick="event.stopPropagation(); deleteImportantWord('${word}')">×</span>
         </button>
       `;
     });
@@ -1045,15 +1080,20 @@
       // 본문이 너무 길면 데스크톱 테이블에서 줄여서 표시 (가독성 유지)
       const shortContent = post.content.length > 50 ? post.content.substring(0, 50) + '...' : post.content;
       
+      const isInstagram = post.platform === "Instagram";
+      const platformClass = isInstagram ? "badge-instagram" : "badge-threads";
+      const platformLabel = isInstagram ? "Instagram" : "Threads";
+      const linkColor = isInstagram ? "#dc2743" : "var(--primary)";
+
       // A. 데스크톱용 테이블 행 렌더링
       tableHtml += `
         <tr>
-          <td><span class="badge badge-threads">Threads</span></td>
+          <td><span class="badge ${platformClass}">${platformLabel}</span></td>
           <td><b>@${post.author}</b></td>
           <td style="color: var(--text-muted); font-size:0.85rem; white-space: nowrap;">${post.created_at}</td>
           <td>${shortContent}</td>
           <td style="white-space: nowrap;">
-            <a href="${post.url}" target="_blank" style="color: var(--primary); font-weight:700; text-decoration:none;">원본보기</a>
+            <a href="${post.url}" target="_blank" style="color: ${linkColor}; font-weight:700; text-decoration:none;">원본보기</a>
           </td>
         </tr>
       `;
@@ -1063,14 +1103,14 @@
         <div class="mobile-post-card">
           <div class="mobile-post-header">
             <div class="mobile-post-author">
-              <span class="badge badge-threads">Threads</span>
+              <span class="badge ${platformClass}">${platformLabel}</span>
               <b>@${post.author}</b>
             </div>
             <div class="mobile-post-date">${post.created_at}</div>
           </div>
           <div class="mobile-post-body">${post.content}</div>
           <div class="mobile-post-footer">
-            <a href="${post.url}" target="_blank" class="btn-mobile-link">
+            <a href="${post.url}" target="_blank" class="btn-mobile-link" style="color: ${linkColor};">
               <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> 원본보기
             </a>
           </div>
@@ -1140,8 +1180,140 @@
 
 
 
+  let instagramCooldownInterval = null;
+
+  // 인스타그램 쿨타임 초기화
+  function initInstagramCooldown() {
+    const btn = document.getElementById('btn-insta-crawl');
+    if (!btn) return;
+
+    const lastCrawl = localStorage.getItem('last_instagram_crawl_time');
+    if (!lastCrawl) {
+      btn.disabled = false;
+      btn.innerHTML = `<i data-lucide="instagram" style="width: 16px; height: 16px;"></i> 인스타그램 수집`;
+      lucide.createIcons();
+      return;
+    }
+
+    const elapsed = Date.now() - parseInt(lastCrawl, 10);
+    const cooldownMs = 20 * 60 * 1000; // 20분
+    
+    if (elapsed < cooldownMs) {
+      btn.disabled = true;
+      if (instagramCooldownInterval) clearInterval(instagramCooldownInterval);
+
+      instagramCooldownInterval = setInterval(() => {
+        const remaining = cooldownMs - (Date.now() - parseInt(lastCrawl, 10));
+        if (remaining <= 0) {
+          clearInterval(instagramCooldownInterval);
+          btn.disabled = false;
+          btn.innerHTML = `<i data-lucide="instagram" style="width: 16px; height: 16px;"></i> 인스타그램 수집`;
+          lucide.createIcons();
+          showToast("🔓 인스타그램 수집 제한이 해제되었습니다!");
+        } else {
+          const minutes = Math.floor(remaining / 60000);
+          const seconds = Math.floor((remaining % 60000) / 1000);
+          btn.innerText = `대기: ${minutes}분 ${seconds}초`;
+        }
+      }, 1000);
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = `<i data-lucide="instagram" style="width: 16px; height: 16px;"></i> 인스타그램 수집`;
+      lucide.createIcons();
+    }
+  }
+
+  // 인스타그램 수동 수집 실행
+  async function crawlInstagram() {
+    const btn = document.getElementById('btn-insta-crawl');
+    if (btn.disabled) return;
+
+    btn.disabled = true;
+    btn.innerText = "수집 중 (Playwright 기동)...";
+    showToast("🚀 인스타그램 수집을 시작합니다. 약 1분 정도 소요됩니다.");
+
+    try {
+      const response = await fetch('/api/crawl/instagram', { method: 'POST' });
+      if (!response.ok) {
+        throw new Error('서버 수집 응답 에러');
+      }
+      const result = await response.json();
+      
+      if (result.status === 'success') {
+        showToast("✅ 인스타그램 수집이 성공적으로 완료되었습니다!");
+        localStorage.setItem('last_instagram_crawl_time', Date.now().toString());
+        
+        // 데이터 즉시 갱신
+        rawPosts = result.data;
+        updateMetrics();
+        updateKeywords();
+        renderData();
+        updateLastCheckedTime();
+        
+        // 쿨타임 시작
+        initInstagramCooldown();
+      } else {
+        throw new Error(result.message || '알 수 없는 수집 실패');
+      }
+    } catch (error) {
+      console.error("[Crawl] 인스타그램 수집 중 오류:", error);
+      showToast("❌ 수집 실패. 세션 확인 및 로그를 검토해주세요.");
+      btn.disabled = false;
+      btn.innerHTML = `<i data-lucide="instagram" style="width: 16px; height: 16px;"></i> 인스타그램 수집`;
+      lucide.createIcons();
+    }
+  }
+
+  // 관리용 지정 키워드 추가
+  function addImportantWord() {
+    const word = prompt("추가할 관리용 키워드를 입력하세요 (예: 맛집, 감성):");
+    if (!word) return;
+    const cleanWord = word.trim();
+    if (!cleanWord) return;
+    if (IMPORTANT_WORDS.includes(cleanWord)) {
+      showToast("이미 등록된 키워드입니다.");
+      return;
+    }
+    IMPORTANT_WORDS.push(cleanWord);
+    localStorage.setItem('important_keywords', JSON.stringify(IMPORTANT_WORDS));
+    showToast(`📌 '${cleanWord}' 키워드가 관리용으로 추가되었습니다.`);
+    
+    // UI 동기 갱신
+    updateKeywords();
+    renderData();
+    
+    // Lucide 아이콘 다시 렌더링 (+추가 아이콘 갱신)
+    lucide.createIcons();
+  }
+
+  // 관리용 지정 키워드 삭제
+  function deleteImportantWord(word) {
+    if (confirm(`'${word}' 키워드를 관리용에서 삭제하시겠습니까?`)) {
+      IMPORTANT_WORDS = IMPORTANT_WORDS.filter(w => w !== word);
+      localStorage.setItem('important_keywords', JSON.stringify(IMPORTANT_WORDS));
+      
+      // 만약 현재 활성화된 키워드 필터가 이거였다면 해제
+      if (activeKeyword === word) {
+        activeKeyword = null;
+        document.getElementById('search-input').value = '';
+      }
+      
+      showToast(`❌ '${word}' 키워드가 삭제되었습니다.`);
+      
+      // UI 동기 갱신
+      updateKeywords();
+      renderData();
+      
+      // Lucide 아이콘 다시 렌더링
+      lucide.createIcons();
+    }
+  }
+
   // 화면 기동 시 로딩 시작
-  window.onload = loadData;
+  window.onload = () => {
+    loadData();
+    initInstagramCooldown();
+  };
 </script>
 </body>
 </html>
