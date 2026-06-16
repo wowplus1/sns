@@ -738,7 +738,7 @@
           <div id="newest-post-time" style="font-size: 0.75rem; font-weight: 400; opacity: 0.8; color: var(--text-muted);"></div>
           <!-- 실시간 자동 화면 갱신 타이머 표시 -->
           <div id="auto-refresh-box" style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; margin-top: 0.1rem;">
-            <span id="auto-refresh-timer" style="color: var(--primary); font-weight: 700;">🔄 180초 후 자동 갱신</span>
+            <span id="auto-refresh-timer" style="color: var(--primary); font-weight: 700;">🔄 600초 후 자동 갱신</span>
             <button id="btn-toggle-refresh" class="btn btn-outline" style="padding: 0.1rem 0.4rem; font-size: 0.7rem; height: auto; border-color: var(--border-color); color: var(--text-muted); margin-left: 0.2rem;" onclick="toggleAutoRefresh()">
               일시정지
             </button>
@@ -887,7 +887,7 @@
 
   // 실시간 자동 화면 갱신 상태 전역 변수
   let autoRefreshActive = true;
-  let nextRefreshSeconds = 180;
+  let nextRefreshSeconds = 600;
   let refreshIntervalId = null;
 
   // 플랫폼 탭 전환 함수
@@ -960,7 +960,7 @@
     updateLastCheckedTime();
     
     // 수동/자동 데이터 로드 완료 시 타이머 초 리셋
-    nextRefreshSeconds = 180;
+    nextRefreshSeconds = 600;
     const timerSpan = document.getElementById('auto-refresh-timer');
     if (timerSpan && autoRefreshActive) {
       timerSpan.innerText = `🔄 ${nextRefreshSeconds}초 후 자동 갱신`;
@@ -1477,7 +1477,7 @@
       const timerSpan = document.getElementById('auto-refresh-timer');
       
       if (nextRefreshSeconds <= 0) {
-        nextRefreshSeconds = 180;
+        nextRefreshSeconds = 600;
         if (timerSpan) timerSpan.innerText = "🔄 데이터 갱신 중...";
         loadDataSilently();
       } else {
@@ -1509,13 +1509,13 @@
     const timerSpan = document.getElementById('auto-refresh-timer');
     
     if (autoRefreshActive) {
-      nextRefreshSeconds = 180;
+      nextRefreshSeconds = 600;
       if (btn) {
         btn.innerText = "일시정지";
         btn.classList.remove('active');
       }
       if (timerSpan) timerSpan.innerText = `🔄 ${nextRefreshSeconds}초 후 자동 갱신`;
-      showToast("🔄 실시간 자동 화면 갱신을 시작합니다 (3분 주기).");
+      showToast("🔄 실시간 자동 화면 갱신을 시작합니다 (10분 주기).");
     } else {
       if (btn) {
         btn.innerText = "시작";
