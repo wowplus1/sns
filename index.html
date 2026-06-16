@@ -737,8 +737,11 @@
             <i data-lucide="download" style="width: 16px; height: 16px;"></i> 전체 데이터 CSV 다운로드
           </button>
         </div>
-        <div id="last-update-time" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 0.35rem;">
-          <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 데이터 수집 시각: 로딩 중...
+        <div id="last-update-time-box" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; display: flex; flex-direction: column; align-items: flex-end; gap: 0.15rem;">
+          <div id="last-update-time" style="display: flex; align-items: center; gap: 0.35rem;">
+            <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 데이터 수집 시각: 로딩 중...
+          </div>
+          <div id="newest-post-time" style="font-size: 0.75rem; font-weight: 400; opacity: 0.8; color: var(--text-muted);"></div>
         </div>
       </div>
     </div>
@@ -795,15 +798,32 @@
     </div>
   </div>
 
+  <!-- 플랫폼 전환 탭 메뉴 -->
+  <div class="tab-bar">
+    <button id="tab-all" class="tab-btn active" onclick="switchTab('all')">
+      <i data-lucide="globe" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 0.3rem;"></i>
+      <span style="vertical-align: middle;">전체</span>
+    </button>
+    <button id="tab-threads" class="tab-btn" onclick="switchTab('threads')">
+      <i data-lucide="message-circle" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 0.3rem;"></i>
+      <span style="vertical-align: middle;">Threads</span>
+    </button>
+    <button id="tab-instagram" class="tab-btn" onclick="switchTab('instagram')">
+      <i data-lucide="instagram" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 0.3rem;"></i>
+      <span style="vertical-align: middle;">Instagram</span>
+    </button>
+  </div>
+
   <div class="control-panel">
     <div class="search-box" style="flex: 1;">
       <i data-lucide="search"></i>
       <input type="text" id="search-input" oninput="filterData()" placeholder="본문 내용 또는 작성자 검색...">
     </div>
-    <div class="filter-box" style="display: flex; align-items: center; gap: 0.5rem;">
+    <div class="filter-box" style="display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;">
       <button id="btn-time-filter" class="btn btn-outline" style="border-color: #d6875b; color: #b25829; display: inline-flex; align-items: center; gap: 0.25rem;" onclick="toggleTimeFilter()">
         <i data-lucide="filter" style="width: 14px; height: 14px;"></i> 최근 3시간 글만 보기
       </button>
+      <span id="filter-count-info" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; min-width: 150px;"></span>
     </div>
   </div>
 
@@ -814,7 +834,7 @@
         <tr>
           <th>플랫폼</th>
           <th>작성자</th>
-          <th>수집 일시</th>
+          <th>작성 일시</th>
           <th>본문 내용 요약</th>
           <th>작업</th>
         </tr>
@@ -862,6 +882,28 @@
   let rawPosts = [];
   let activeKeyword = null;
   let filter3Hours = false;
+  let currentTab = 'all';
+
+  // 플랫폼 탭 전환 함수
+  function switchTab(tab) {
+    currentTab = tab;
+    
+    // 탭 버튼 active 클래스 갱신
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    const targetBtn = document.getElementById(`tab-${tab}`);
+    if (targetBtn) {
+      targetBtn.classList.add('active');
+    }
+    
+    const tabNames = { 'all': '전체 플랫폼', 'threads': 'Threads', 'instagram': 'Instagram' };
+    showToast(`📱 ${tabNames[tab]} 피드로 전환되었습니다.`);
+    
+    // 키워드 통계 및 데이터 테이블 렌더링 갱신
+    updateKeywords();
+    renderData();
+  }
 
   // 의미가 무의미하거나 일반적인 조사와 부사들을 필터링하기 위한 불용어 목록
   const STOP_WORDS = new Set([
@@ -912,28 +954,35 @@
     updateLastCheckedTime();
   }
 
-  // 1-1. 수집된 글 중 가장 최신 글의 수집 시각(데이터 최종 갱신 시각) 표시
+  function getFormattedCurrentTime() {
+    const now = new Date();
+    const pad = (n) => n.toString().padStart(2, '0');
+    return `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  }
+
+  // 1-1. 마지막 수집 실행 시각 및 보유 데이터 중 최신글 날짜 업데이트
   function updateLastCheckedTime() {
+    // A. 수집 실행 시각 (현재 컴퓨터 브라우저 시각 기준)
+    const currentTimeStr = getFormattedCurrentTime();
+    document.getElementById('last-update-time').innerHTML = `
+      <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 데이터 수집 시각: ${currentTimeStr}
+    `;
+
+    // B. 데이터베이스 내 최신 포스트 등록 시간 추출
     if (rawPosts && rawPosts.length > 0) {
-      // created_at 기준으로 내림차순 정렬하여 가장 최근 수집 일시 확보
       const dates = rawPosts
         .map(p => p.created_at)
         .filter(d => d)
         .sort((a, b) => b.localeCompare(a));
       
-      if (dates.length > 0) {
-        const lastDataTime = dates[0];
-        document.getElementById('last-update-time').innerHTML = `
-          <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 데이터 수집 시각: ${lastDataTime}
-        `;
-        lucide.createIcons();
-        return;
+      const newestPostTimeDiv = document.getElementById('newest-post-time');
+      if (dates.length > 0 && newestPostTimeDiv) {
+        newestPostTimeDiv.innerHTML = `수집 데이터 내 최신글 등록 시간: ${dates[0]}`;
       }
+    } else {
+      const newestPostTimeDiv = document.getElementById('newest-post-time');
+      if (newestPostTimeDiv) newestPostTimeDiv.innerHTML = '';
     }
-    
-    document.getElementById('last-update-time').innerHTML = `
-      <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 데이터 수집 시각: 정보 없음
-    `;
     lucide.createIcons();
   }
 
@@ -958,6 +1007,12 @@
     });
     
     rawPosts.forEach(post => {
+      // 현재 활성화된 플랫폼 탭에 해당하는 글만 키워드 집계에 포함
+      if (currentTab !== 'all') {
+        const postPlatform = (post.platform || '').toLowerCase();
+        if (postPlatform !== currentTab) return;
+      }
+
       if (!post.content) return;
 
       // [조사/어미 결합 예외 해결] 본문 포함 여부(includes)로 정밀하게 계산하여 조사 파편 누락을 차단
@@ -1070,31 +1125,77 @@
     const mobileCardList = document.getElementById('mobile-card-list');
     const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
     
-    // 필터링 적용 (Threads 단독 수집이므로 플랫폼 필터 생략)
+    // 필터링 적용
     const filtered = rawPosts.filter(post => {
-      // 1. 검색어 필터링
+      // 1. 플랫폼 탭 필터링
+      if (currentTab !== 'all') {
+        const postPlatform = (post.platform || '').toLowerCase();
+        if (postPlatform !== currentTab) {
+          return false;
+        }
+      }
+
+      // 2. 검색어 필터링
       const matchSearch = (!searchQuery || 
                            post.content.toLowerCase().includes(searchQuery) || 
                            post.author.toLowerCase().includes(searchQuery));
       
       if (!matchSearch) return false;
 
-      // 2. 최근 3시간 필터링
+      // 3. 최근 3시간 필터링
       if (filter3Hours && post.created_at) {
         try {
-          // 윈도우/사파리 날짜 호환성을 위해 하이픈(-)을 슬래시(/)로 변경
-          const postTime = new Date(post.created_at.replace(/-/g, '/')).getTime();
-          const diffHours = (Date.now() - postTime) / (1000 * 60 * 60);
-          if (diffHours > 3) {
+          // "YYYY-MM-DD HH:MM:SS" 안전 파싱 (모든 브라우저 엔진 및 기기 호환)
+          const parts = post.created_at.match(/(\d+)/g);
+          if (parts && parts.length >= 6) {
+            const year = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10) - 1;
+            const day = parseInt(parts[2], 10);
+            const hour = parseInt(parts[3], 10);
+            const minute = parseInt(parts[4], 10);
+            const second = parseInt(parts[5], 10);
+            
+            const postTime = new Date(year, month, day, hour, minute, second).getTime();
+            const diffHours = (Date.now() - postTime) / (1000 * 60 * 60);
+            
+            // 콘솔 디버깅 로그 (필터 오작동 원인 분석용)
+            console.log(`[Filter] Post Time: ${post.created_at}, Current: ${new Date().toISOString()}, Diff: ${diffHours.toFixed(2)}h`);
+            
+            // 시차가 3시간보다 크거나, 컴퓨터 시계 오차(음수)가 30분(-0.5시간) 이상으로 크게 벌어지는 경우 제외 (미세 시간 오차 자동 보정)
+            if (diffHours > 3 || diffHours < -0.5) {
+              return false;
+            }
+          } else {
             return false;
           }
         } catch (e) {
-          // 파싱 에러 시 필터 무시하고 노출
+          console.error("[Filter] 날짜 파싱 오류:", e);
         }
       }
 
       return true;
     });
+
+    // 현재 플랫폼 탭에 해당하는 전체 글 개수 계산
+    const totalInTab = rawPosts.filter(post => {
+      if (currentTab !== 'all') {
+        return (post.platform || '').toLowerCase() === currentTab;
+      }
+      return true;
+    }).length;
+
+    // 필터 상태 실시간 건수 텍스트 업데이트
+    const infoSpan = document.getElementById('filter-count-info');
+    if (infoSpan) {
+      const platformLabel = currentTab === 'all' ? '전체' : (currentTab === 'threads' ? 'Threads' : 'Instagram');
+      if (filter3Hours) {
+        infoSpan.innerText = `(3시간 이내: ${filtered.length}건 / ${platformLabel} ${totalInTab}건)`;
+        infoSpan.style.color = '#b25829';
+      } else {
+        infoSpan.innerText = `(${platformLabel}: ${filtered.length}건)`;
+        infoSpan.style.color = 'var(--text-muted)';
+      }
+    }
 
     if (filtered.length === 0) {
       tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">매칭되는 데이터가 없습니다.</td></tr>`;
