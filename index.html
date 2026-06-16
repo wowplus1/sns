@@ -727,21 +727,22 @@
       </div>
       <div class="header-actions" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
         <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
-          <button id="btn-insta-crawl" class="btn btn-instagram" onclick="crawlInstagram()">
-            <i data-lucide="instagram" style="width: 16px; height: 16px;"></i> 인스타그램 수집
-          </button>
-          <button class="btn btn-threads" onclick="loadData(); showToast('🔄 최신 수집 데이터를 화면에 새로 불러왔습니다.');">
-            <i data-lucide="refresh-cw" style="width: 16px; height: 16px;"></i> 대시보드 새로고침
-          </button>
           <button class="btn btn-outline" onclick="exportToCSV()">
             <i data-lucide="download" style="width: 16px; height: 16px;"></i> 전체 데이터 CSV 다운로드
           </button>
         </div>
-        <div id="last-update-time-box" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; display: flex; flex-direction: column; align-items: flex-end; gap: 0.15rem;">
+        <div id="last-update-time-box" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem;">
           <div id="last-update-time" style="display: flex; align-items: center; gap: 0.35rem;">
             <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--primary-light);"></i> 마지막 데이터 수집 시각: 로딩 중...
           </div>
           <div id="newest-post-time" style="font-size: 0.75rem; font-weight: 400; opacity: 0.8; color: var(--text-muted);"></div>
+          <!-- 실시간 자동 화면 갱신 타이머 표시 -->
+          <div id="auto-refresh-box" style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; margin-top: 0.1rem;">
+            <span id="auto-refresh-timer" style="color: var(--primary); font-weight: 700;">🔄 180초 후 자동 갱신</span>
+            <button id="btn-toggle-refresh" class="btn btn-outline" style="padding: 0.1rem 0.4rem; font-size: 0.7rem; height: auto; border-color: var(--border-color); color: var(--text-muted); margin-left: 0.2rem;" onclick="toggleAutoRefresh()">
+              일시정지
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -884,6 +885,11 @@
   let filter3Hours = false;
   let currentTab = 'all';
 
+  // 실시간 자동 화면 갱신 상태 전역 변수
+  let autoRefreshActive = true;
+  let nextRefreshSeconds = 180;
+  let refreshIntervalId = null;
+
   // 플랫폼 탭 전환 함수
   function switchTab(tab) {
     currentTab = tab;
@@ -952,6 +958,13 @@
     updateKeywords();
     renderData();
     updateLastCheckedTime();
+    
+    // 수동/자동 데이터 로드 완료 시 타이머 초 리셋
+    nextRefreshSeconds = 180;
+    const timerSpan = document.getElementById('auto-refresh-timer');
+    if (timerSpan && autoRefreshActive) {
+      timerSpan.innerText = `🔄 ${nextRefreshSeconds}초 후 자동 갱신`;
+    }
   }
 
   function getFormattedCurrentTime() {
@@ -1453,10 +1466,71 @@
     renderData();
   }
 
+  // 실시간 자동 화면 갱신 타이머 시작
+  function startAutoRefreshTimer() {
+    if (refreshIntervalId) clearInterval(refreshIntervalId);
+    
+    refreshIntervalId = setInterval(() => {
+      if (!autoRefreshActive) return;
+      
+      nextRefreshSeconds--;
+      const timerSpan = document.getElementById('auto-refresh-timer');
+      
+      if (nextRefreshSeconds <= 0) {
+        nextRefreshSeconds = 180;
+        if (timerSpan) timerSpan.innerText = "🔄 데이터 갱신 중...";
+        loadDataSilently();
+      } else {
+        if (timerSpan) timerSpan.innerText = `🔄 ${nextRefreshSeconds}초 후 자동 갱신`;
+      }
+    }, 1000);
+  }
+
+  // 조용한 백그라운드 데이터 로딩
+  async function loadDataSilently() {
+    try {
+      const response = await fetch(`data.json?t=${new Date().getTime()}`, { cache: 'no-store' });
+      if (response.ok) {
+        rawPosts = await response.json();
+        updateMetrics();
+        updateKeywords();
+        renderData();
+        updateLastCheckedTime();
+      }
+    } catch (error) {
+      console.warn("[Data] 자동 화면 갱신 리패치 실패:", error);
+    }
+  }
+
+  // 자동 갱신 활성/비활성 토글
+  function toggleAutoRefresh() {
+    autoRefreshActive = !autoRefreshActive;
+    const btn = document.getElementById('btn-toggle-refresh');
+    const timerSpan = document.getElementById('auto-refresh-timer');
+    
+    if (autoRefreshActive) {
+      nextRefreshSeconds = 180;
+      if (btn) {
+        btn.innerText = "일시정지";
+        btn.classList.remove('active');
+      }
+      if (timerSpan) timerSpan.innerText = `🔄 ${nextRefreshSeconds}초 후 자동 갱신`;
+      showToast("🔄 실시간 자동 화면 갱신을 시작합니다 (3분 주기).");
+    } else {
+      if (btn) {
+        btn.innerText = "시작";
+        btn.classList.add('active');
+      }
+      if (timerSpan) timerSpan.innerText = "⏸️ 자동 갱신 일시정지됨";
+      showToast("⏸️ 실시간 자동 화면 갱신이 일시정지되었습니다.");
+    }
+  }
+
   // 화면 기동 시 로딩 시작
   window.onload = () => {
     loadData();
     initInstagramCooldown();
+    startAutoRefreshTimer();
   };
 </script>
 </body>
