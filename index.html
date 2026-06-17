@@ -20,6 +20,8 @@
       --primary-hover: #5c7c5a;
       --naver-green: #03c75a;
       --naver-hover: #029e47;
+      --youtube-red: #ff0000;
+      --youtube-hover: #cc0000;
       --bg-dark: #f4f6f3;
       --card-bg: #ffffff;
       --text-main: #2b3a2a;
@@ -347,6 +349,14 @@
       background-color: var(--naver-hover);
     }
 
+    .btn-youtube {
+      background-color: var(--youtube-red);
+      color: white;
+    }
+    .btn-youtube:hover {
+      background-color: var(--youtube-hover);
+    }
+
     .btn-outline {
       background: none;
       border: 1px solid var(--border-color);
@@ -410,6 +420,7 @@
     .badge-threads { background-color: rgba(139, 168, 136, 0.15); color: var(--primary); }
     .badge-naver { background-color: rgba(3, 199, 90, 0.12); color: var(--naver-green); }
     .badge-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
+    .badge-youtube { background-color: rgba(255, 0, 0, 0.08); color: var(--youtube-red); }
 
     /* 9. 토스트 메세지 알림 */
     .toast {
@@ -817,6 +828,10 @@
       <i data-lucide="book-open" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 0.3rem;"></i>
       <span style="vertical-align: middle;">Naver Blog</span>
     </button>
+    <button id="tab-youtube" class="tab-btn" onclick="switchTab('youtube')">
+      <i data-lucide="video" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 0.3rem;"></i>
+      <span style="vertical-align: middle;">YouTube</span>
+    </button>
   </div>
 
   <div class="control-panel">
@@ -907,7 +922,7 @@
       targetBtn.classList.add('active');
     }
     
-    const tabNames = { 'all': '전체 플랫폼', 'threads': 'Threads', 'instagram': 'Instagram', 'naver': 'Naver Blog' };
+    const tabNames = { 'all': '전체 플랫폼', 'threads': 'Threads', 'instagram': 'Instagram', 'naver': 'Naver Blog', 'youtube': 'YouTube' };
     showToast(`📱 ${tabNames[tab]} 피드로 전환되었습니다.`);
     
     // 키워드 통계 및 데이터 테이블 렌더링 갱신
@@ -1151,6 +1166,10 @@
           if (postPlatform !== 'naver' && postPlatform !== 'naver blog') {
             return false;
           }
+        } else if (currentTab === 'youtube') {
+          if (postPlatform !== 'youtube') {
+            return false;
+          }
         } else if (postPlatform !== currentTab) {
           return false;
         }
@@ -1204,6 +1223,9 @@
         if (currentTab === 'naver') {
           return postPlatform === 'naver' || postPlatform === 'naver blog';
         }
+        if (currentTab === 'youtube') {
+          return postPlatform === 'youtube';
+        }
         return postPlatform === currentTab;
       }
       return true;
@@ -1212,7 +1234,7 @@
     // 필터 상태 실시간 건수 텍스트 업데이트
     const infoSpan = document.getElementById('filter-count-info');
     if (infoSpan) {
-      const platformLabel = currentTab === 'all' ? '전체' : (currentTab === 'threads' ? 'Threads' : (currentTab === 'instagram' ? 'Instagram' : 'Naver Blog'));
+      const platformLabel = currentTab === 'all' ? '전체' : (currentTab === 'threads' ? 'Threads' : (currentTab === 'instagram' ? 'Instagram' : (currentTab === 'naver' ? 'Naver Blog' : 'YouTube')));
       if (filter3Hours) {
         infoSpan.innerText = `(3시간 이내: ${filtered.length}건 / ${platformLabel} ${totalInTab}건)`;
         infoSpan.style.color = '#b25829';
@@ -1237,9 +1259,10 @@
       
       const isInstagram = post.platform === "Instagram";
       const isNaver = post.platform === "Naver Blog";
-      const platformClass = isNaver ? "badge-naver" : (isInstagram ? "badge-instagram" : "badge-threads");
-      const platformLabel = isNaver ? "Naver Blog" : (isInstagram ? "Instagram" : "Threads");
-      const linkColor = isNaver ? "var(--naver-green)" : (isInstagram ? "#dc2743" : "var(--primary)");
+      const isYoutube = post.platform === "YouTube";
+      const platformClass = isNaver ? "badge-naver" : (isYoutube ? "badge-youtube" : (isInstagram ? "badge-instagram" : "badge-threads"));
+      const platformLabel = isNaver ? "Naver Blog" : (isYoutube ? "YouTube" : (isInstagram ? "Instagram" : "Threads"));
+      const linkColor = isNaver ? "var(--naver-green)" : (isYoutube ? "var(--youtube-red)" : (isInstagram ? "#dc2743" : "var(--primary)"));
 
       // A. 데스크톱용 테이블 행 렌더링
       tableHtml += `
