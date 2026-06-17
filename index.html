@@ -1147,7 +1147,11 @@
       // 1. 플랫폼 탭 필터링
       if (currentTab !== 'all') {
         const postPlatform = (post.platform || '').toLowerCase();
-        if (postPlatform !== currentTab) {
+        if (currentTab === 'naver') {
+          if (postPlatform !== 'naver' && postPlatform !== 'naver blog') {
+            return false;
+          }
+        } else if (postPlatform !== currentTab) {
           return false;
         }
       }
@@ -1196,7 +1200,11 @@
     // 현재 플랫폼 탭에 해당하는 전체 글 개수 계산
     const totalInTab = rawPosts.filter(post => {
       if (currentTab !== 'all') {
-        return (post.platform || '').toLowerCase() === currentTab;
+        const postPlatform = (post.platform || '').toLowerCase();
+        if (currentTab === 'naver') {
+          return postPlatform === 'naver' || postPlatform === 'naver blog';
+        }
+        return postPlatform === currentTab;
       }
       return true;
     }).length;
