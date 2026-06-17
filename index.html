@@ -813,6 +813,10 @@
       <i data-lucide="instagram" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 0.3rem;"></i>
       <span style="vertical-align: middle;">Instagram</span>
     </button>
+    <button id="tab-naver" class="tab-btn" onclick="switchTab('naver')">
+      <i data-lucide="book-open" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 0.3rem;"></i>
+      <span style="vertical-align: middle;">Naver Blog</span>
+    </button>
   </div>
 
   <div class="control-panel">
@@ -903,7 +907,7 @@
       targetBtn.classList.add('active');
     }
     
-    const tabNames = { 'all': '전체 플랫폼', 'threads': 'Threads', 'instagram': 'Instagram' };
+    const tabNames = { 'all': '전체 플랫폼', 'threads': 'Threads', 'instagram': 'Instagram', 'naver': 'Naver Blog' };
     showToast(`📱 ${tabNames[tab]} 피드로 전환되었습니다.`);
     
     // 키워드 통계 및 데이터 테이블 렌더링 갱신
@@ -1200,7 +1204,7 @@
     // 필터 상태 실시간 건수 텍스트 업데이트
     const infoSpan = document.getElementById('filter-count-info');
     if (infoSpan) {
-      const platformLabel = currentTab === 'all' ? '전체' : (currentTab === 'threads' ? 'Threads' : 'Instagram');
+      const platformLabel = currentTab === 'all' ? '전체' : (currentTab === 'threads' ? 'Threads' : (currentTab === 'instagram' ? 'Instagram' : 'Naver Blog'));
       if (filter3Hours) {
         infoSpan.innerText = `(3시간 이내: ${filtered.length}건 / ${platformLabel} ${totalInTab}건)`;
         infoSpan.style.color = '#b25829';
@@ -1224,9 +1228,10 @@
       const shortContent = post.content.length > 50 ? post.content.substring(0, 50) + '...' : post.content;
       
       const isInstagram = post.platform === "Instagram";
-      const platformClass = isInstagram ? "badge-instagram" : "badge-threads";
-      const platformLabel = isInstagram ? "Instagram" : "Threads";
-      const linkColor = isInstagram ? "#dc2743" : "var(--primary)";
+      const isNaver = post.platform === "Naver Blog";
+      const platformClass = isNaver ? "badge-naver" : (isInstagram ? "badge-instagram" : "badge-threads");
+      const platformLabel = isNaver ? "Naver Blog" : (isInstagram ? "Instagram" : "Threads");
+      const linkColor = isNaver ? "var(--naver-green)" : (isInstagram ? "#dc2743" : "var(--primary)");
 
       // A. 데스크톱용 테이블 행 렌더링
       tableHtml += `
