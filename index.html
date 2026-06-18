@@ -800,9 +800,15 @@
         <span style="display: inline-flex; align-items: center; gap: 0.5rem;">
           <i data-lucide="bookmark-check" style="width: 20px; height: 20px; color: #d6875b;"></i> 📌 관리용 지정 키워드
         </span>
-        <button class="btn btn-outline" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-color: #d6875b; color: #b25829; height: auto; display: inline-flex; align-items: center; gap: 0.25rem;" onclick="addImportantWord()">
-          <i data-lucide="plus" style="width: 12px; height: 12px;"></i> 추가
-        </button>
+        <div style="display: flex; align-items: center; gap: 0.4rem;">
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">필터:</span>
+          <button id="btn-kw-mode" class="btn btn-outline" style="padding: 0.2rem 0.5rem; font-size: 0.75rem; border-color: #d6875b; color: #b25829; height: auto;" onclick="toggleKeywordMode()">
+            모두 포함 (AND)
+          </button>
+          <button class="btn btn-outline" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-color: #d6875b; color: #b25829; height: auto; display: inline-flex; align-items: center; gap: 0.25rem;" onclick="addImportantWord()">
+            <i data-lucide="plus" style="width: 12px; height: 12px;"></i> 추가
+          </button>
+        </div>
       </h3>
       <div id="important-keyword-list" style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
         <div style="color: var(--text-muted); font-size: 0.9rem;">데이터를 불러오는 중입니다...</div>
@@ -900,7 +906,8 @@
   ];
 
   let rawPosts = [];
-  let activeKeyword = null;
+  let activeKeywords = new Set();
+  let keywordMatchMode = 'AND'; // 'AND' 또는 'OR'
   let filter3Hours = false;
   let currentTab = 'all';
 
@@ -1105,7 +1112,7 @@
     } else {
       let html = '';
       sortedKeywords.forEach(item => {
-        const isActive = activeKeyword === item.word;
+        const isActive = activeKeywords.has(item.word);
         html += `
           <button class="keyword-badge ${isActive ? 'active' : ''}" onclick="toggleKeywordFilter('${item.word.replace(/'/g, "\\'")}')">
             <span># ${item.word}</span>
@@ -1121,7 +1128,7 @@
     let impHtml = '';
     IMPORTANT_WORDS.forEach(word => {
       const count = Math.round(importantCount[word] || 0);
-      const isActive = activeKeyword === word;
+      const isActive = activeKeywords.has(word);
       impHtml += `
         <button class="keyword-badge ${isActive ? 'active' : ''}" style="border-color: #d6875b; color: ${isActive ? 'white' : '#b25829'}; background-color: ${isActive ? '#b25829' : 'rgba(214, 135, 91, 0.08)'}; display: inline-flex; align-items: center; gap: 0.4rem;" onclick="toggleKeywordFilter('${word}')">
           <span>📌 ${word}</span>
@@ -1133,21 +1140,32 @@
     importantListContainer.innerHTML = impHtml;
   }
 
-  // 2-2. 키워드 클릭 시 검색 필터 토글
+  // 2-2. 키워드 클릭 시 검색 필터 토글 (복수 선택 가능)
   function toggleKeywordFilter(word) {
-    const searchInput = document.getElementById('search-input');
-    
-    if (activeKeyword === word) {
-      activeKeyword = null;
-      searchInput.value = '';
-      showToast('❌ 키워드 필터가 해제되었습니다.');
+    if (activeKeywords.has(word)) {
+      activeKeywords.delete(word);
+      showToast(`❌ '${word}' 키워드 필터가 해제되었습니다.`);
     } else {
-      activeKeyword = word;
-      searchInput.value = word;
-      showToast(`🔍 '#${word}' 키워드로 본문을 필터링합니다.`);
+      activeKeywords.add(word);
+      showToast(`🔍 '${word}' 키워드 필터가 추가되었습니다.`);
     }
     
     updateKeywords();
+    renderData();
+  }
+
+  // AND / OR 조건 변경 함수
+  function toggleKeywordMode() {
+    const btn = document.getElementById('btn-kw-mode');
+    if (keywordMatchMode === 'AND') {
+      keywordMatchMode = 'OR';
+      if (btn) btn.innerText = "하나라도 포함 (OR)";
+      showToast("🔀 키워드 중 하나라도 포함된 글을 찾습니다 (OR 필터).");
+    } else {
+      keywordMatchMode = 'AND';
+      if (btn) btn.innerText = "모두 포함 (AND)";
+      showToast("⚙️ 선택된 모든 키워드가 포함된 글만 찾습니다 (AND 필터).");
+    }
     renderData();
   }
 
@@ -1181,6 +1199,31 @@
                            post.author.toLowerCase().includes(searchQuery));
       
       if (!matchSearch) return false;
+
+      // 2-2. 복수 키워드 칩 필터링 (AND/OR 조건 지원)
+      if (activeKeywords.size > 0) {
+        if (!post.content) return false;
+        const lowerContent = post.content.toLowerCase();
+        
+        if (keywordMatchMode === 'AND') {
+          // 모든 활성 키워드가 포함되어야 통과 (AND)
+          for (const kw of activeKeywords) {
+            if (!lowerContent.includes(kw.toLowerCase())) {
+              return false;
+            }
+          }
+        } else {
+          // 활성 키워드 중 하나라도 포함되면 통과 (OR)
+          let anyMatch = false;
+          for (const kw of activeKeywords) {
+            if (lowerContent.includes(kw.toLowerCase())) {
+              anyMatch = true;
+              break;
+            }
+          }
+          if (!anyMatch) return false;
+        }
+      }
 
       // 3. 최근 3시간 필터링
       if (filter3Hours && post.created_at) {
@@ -1306,12 +1349,6 @@
 
   // 4. 필터링 인풋 입력 감지
   function filterData() {
-    const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
-    // 사용자가 입력한 검색어가 활성화된 키워드 칩과 다르면 activeKeyword 해제 후 갱신
-    if (activeKeyword && searchQuery !== activeKeyword.toLowerCase()) {
-      activeKeyword = null;
-      updateKeywords();
-    }
     renderData();
   }
 
@@ -1471,10 +1508,9 @@
       IMPORTANT_WORDS = IMPORTANT_WORDS.filter(w => w !== word);
       localStorage.setItem('important_keywords', JSON.stringify(IMPORTANT_WORDS));
       
-      // 만약 현재 활성화된 키워드 필터가 이거였다면 해제
-      if (activeKeyword === word) {
-        activeKeyword = null;
-        document.getElementById('search-input').value = '';
+      // 만약 현재 활성화된 키워드 필터에 포함되어 있다면 제거
+      if (activeKeywords.has(word)) {
+        activeKeywords.delete(word);
       }
       
       showToast(`❌ '${word}' 키워드가 삭제되었습니다.`);
