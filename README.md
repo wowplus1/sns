@@ -72,7 +72,7 @@ NAVER_CLIENT_ID=your_naver_client_id
 NAVER_CLIENT_SECRET=your_naver_client_secret
 
 # 유튜브 API 설정 (공식 API 발급 키 필수)
-YOUTUBE_API_KEY=AIzaSyDdFENypre5Qe3YHbU5aZcHmkDKPvPSMaY
+YOUTUBE_API_KEY=your_youtube_api_key_here
 
 # 깃허브 자동 페이지 업로드 설정 (대시보드 실시간 동기화용)
 GITHUB_TOKEN=your_github_personal_access_token
