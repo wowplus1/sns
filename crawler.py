@@ -515,29 +515,24 @@ def start_server(port=8001):
 
     httpd = HTTPServer(server_address, LocalFilesHandler)
     
-    # 백그라운드 스케줄러 스레드 기동
-    scheduler_thread = threading.Thread(target=start_scheduler, daemon=True)
-    scheduler_thread.start()
+    # [수정] 백그라운드 자동 수집 스케줄러 비활성화 (GitHub Pages 빌드 겹침 및 메일 알림 방지)
+    # scheduler_thread = threading.Thread(target=start_scheduler, daemon=True)
+    # scheduler_thread.start()
     
-    # 인스타그램 자동 스케줄러 스레드 기동
-    insta_scheduler_thread = threading.Thread(target=start_instagram_scheduler, daemon=True)
-    insta_scheduler_thread.start()
+    # insta_scheduler_thread = threading.Thread(target=start_instagram_scheduler, daemon=True)
+    # insta_scheduler_thread.start()
     
-    # 네이버 블로그 자동 스케줄러 스레드 기동
-    naver_scheduler_thread = threading.Thread(target=start_naver_scheduler, daemon=True)
-    naver_scheduler_thread.start()
+    # naver_scheduler_thread = threading.Thread(target=start_naver_scheduler, daemon=True)
+    # naver_scheduler_thread.start()
     
-    # 유튜브 자동 스케줄러 스레드 기동
-    youtube_scheduler_thread = threading.Thread(target=start_youtube_scheduler, daemon=True)
-    youtube_scheduler_thread.start()
+    # youtube_scheduler_thread = threading.Thread(target=start_youtube_scheduler, daemon=True)
+    # youtube_scheduler_thread.start()
     
-    # 트위터 자동 스케줄러 스레드 기동
-    twitter_scheduler_thread = threading.Thread(target=start_twitter_scheduler, daemon=True)
-    twitter_scheduler_thread.start()
+    # twitter_scheduler_thread = threading.Thread(target=start_twitter_scheduler, daemon=True)
+    # twitter_scheduler_thread.start()
     
-    # 네이버 카페 자동 스케줄러 스레드 기동
-    naver_cafe_scheduler_thread = threading.Thread(target=start_naver_cafe_scheduler, daemon=True)
-    naver_cafe_scheduler_thread.start()
+    # naver_cafe_scheduler_thread = threading.Thread(target=start_naver_cafe_scheduler, daemon=True)
+    # naver_cafe_scheduler_thread.start()
     
     print(f"\n==================================================")
     print(f" [Server] 내장 API 및 대시보드 서버 기동 완료")
