@@ -190,6 +190,18 @@ class APIServerHandler(SimpleHTTPRequestHandler):
         self.send_response(200, "ok")
         self.end_headers()
 
+    def do_GET(self):
+        if self.path == "/api/get_gemini_key":
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            response_body = json.dumps({
+                "key": config.GEMINI_API_KEY
+            }, ensure_ascii=False)
+            self.wfile.write(response_body.encode('utf-8'))
+        else:
+            super().do_GET()
+
     def do_POST(self):
         if self.path in ("/api/crawl", "/api/crawl/instagram", "/api/crawl/naver", "/api/crawl/youtube", "/api/crawl/twitter", "/api/crawl/naver_cafe"):
             if self.path == "/api/crawl/instagram":
