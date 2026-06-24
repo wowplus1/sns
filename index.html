@@ -2017,7 +2017,11 @@
     listDiv.innerHTML = '';
 
     try {
-      const response = await fetch('/api/generate_reply', {
+      // 외부 깃허브 페이지스 도메인에서도 로컬에 띄워진 파이썬 API 서버와 안전하게 CORS 통신할 수 있도록 주소 분기
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const apiUrl = isLocal ? '/api/generate_reply' : 'http://localhost:8001/api/generate_reply';
+
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
