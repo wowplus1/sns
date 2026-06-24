@@ -1951,6 +1951,25 @@
     }
   }
 
+  // 최초 로드 시 로컬 백엔드로부터 Gemini API Key 동기화 시도 (정적 페이지 외부 접속 시 로컬스토리지를 통한 우회 호출 대비)
+  async function syncGeminiKey() {
+    if (localStorage.getItem('gemini_api_key')) return;
+    try {
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const apiUrl = isLocal ? '/api/get_gemini_key' : 'http://localhost:8001/api/get_gemini_key';
+      const response = await fetch(apiUrl);
+      if (response.ok) {
+        const result = await response.json();
+        if (result.key) {
+          localStorage.setItem('gemini_api_key', result.key);
+          console.log("[Gemini] API Key가 성공적으로 연동되었습니다.");
+        }
+      }
+    } catch (e) {
+      console.log("[Gemini] API Key 로컬 동기화 스킵 (정적 호스팅 환경)");
+    }
+  }
+
   // 화면 기동 시 로딩 시작
   window.onload = () => {
     loadData();
@@ -1958,6 +1977,7 @@
     initTwitterCooldown();
     initCafeCooldown();
     startAutoRefreshTimer();
+    syncGeminiKey(); // API Key 동기화 수행
   };
 
   // AI 댓글 추천 모달 관련 상태 변수
@@ -2016,43 +2036,77 @@
     resultDiv.style.display = 'none';
     listDiv.innerHTML = '';
 
-    try {
-      // 외부 깃허브 페이지스 도메인에서도 로컬에 띄워진 파이썬 API 서버와 안전하게 CORS 통신할 수 있도록 주소 분기
-      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-      const apiUrl = isLocal ? '/api/generate_reply' : 'http://localhost:8001/api/generate_reply';
+    // 1. API 키 확인 (없으면 prompt 입력 요구)
+    let apiKey = localStorage.getItem('gemini_api_key');
+    if (!apiKey) {
+      apiKey = prompt("💡 다른 위치(외부 모바일 등)에서도 직접 구글 API를 호출하기 위해 Gemini API Key를 한 번만 입력해 주세요:");
+      if (!apiKey || !apiKey.trim()) {
+        showToast("❌ API Key가 입력되지 않아 AI 추천 기능을 사용할 수 없습니다.");
+        return;
+      }
+      localStorage.setItem('gemini_api_key', apiKey.trim());
+    }
 
-      const response = await fetch(apiUrl, {
+    try {
+      // 2. 구글 Gemini API 직접 호출 (백엔드를 아예 거치지 않아 서버 무관 100% 작동)
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent?key=${apiKey}`;
+      const promptText = `너는 제주도 감성 숙소 '비로소433'의 사장님이야. 다음 제주 여행객이 작성한 SNS 본문을 친절하게 읽고, 우리 숙소를 부담스럽지 않고 센스 있게 추천하거나 환영하는 댓글 초안(120자 이내, 구어체, 친근한 이모지 1~2개 포함)을 서로 다른 다양한 톤앤매너와 내용으로 4개 생성해줘. 출력 포맷은 반드시 다음과 같은 JSON 배열 형식으로만 출력해줘. 다른 설명이나 텍스트는 절대 포함하지 마:\n["첫 번째 댓글 초안", "두 번째 댓글 초안", "세 번째 댓글 초안", "네 번째 댓글 초안"]\n\n[여행객 게시글 본문]: ${post.content}`;
+
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ content: post.content })
+        body: JSON.stringify({
+          contents: [{
+            parts: [{ text: promptText }]
+          }]
+        })
       });
 
       if (!response.ok) {
-        throw new Error('Gemini API 호출 에러');
+        throw new Error('Gemini API 직접 호출 에러');
       }
 
       const result = await response.json();
-      if (result.status === 'success' && result.replies && result.replies.length > 0) {
-        loadingDiv.style.display = 'none';
-        resultDiv.style.display = 'block';
+      try {
+        const text = result.candidates[0].content.parts[0].text;
+        let replies = [];
         
-        let repliesHtml = '';
-        result.replies.forEach(reply => {
-          repliesHtml += `
-            <div class="ai-reply-card" onclick="copyAndRedirectReply(this.innerText, '${currentAiPostUrl}')">
-              ${reply}
-            </div>
-          `;
-        });
-        listDiv.innerHTML = repliesHtml;
-      } else {
-        throw new Error(result.message || '추천 답변이 존재하지 않습니다.');
+        // JSON 배열 파싱
+        const jsonMatch = text.match(/\[.*\]/s);
+        if (jsonMatch) {
+          replies = JSON.parse(jsonMatch[0]);
+        } else {
+          replies = [text.trim()];
+        }
+        
+        if (replies.length > 0) {
+          loadingDiv.style.display = 'none';
+          resultDiv.style.display = 'block';
+          
+          let repliesHtml = '';
+          replies.forEach(reply => {
+            repliesHtml += `
+              <div class="ai-reply-card" onclick="copyAndRedirectReply(this.innerText, '${currentAiPostUrl}')">
+                ${reply}
+              </div>
+            `;
+          });
+          listDiv.innerHTML = repliesHtml;
+        } else {
+          throw new Error("생성된 답변 목록이 비어 있습니다.");
+        }
+      } catch (parse_err) {
+        console.error("Gemini 응답 파싱 실패:", parse_err);
+        throw parse_err;
       }
     } catch (error) {
       console.error("[Gemini UI] AI 추천 댓글 실패:", error);
-      showToast("❌ AI 추천 댓글 생성에 실패했습니다.");
+      showToast("❌ AI 추천 댓글 생성에 실패했습니다. API Key를 확인해 주세요.");
+      
+      // 혹시 API 키 만료/오류 등의 이유로 실패했으면 키를 삭제하여 다음번 클릭 시 다시 입력받도록 지원
+      localStorage.removeItem('gemini_api_key');
       closeAiModal();
     }
   }
