@@ -338,172 +338,95 @@ class APIServerHandler(SimpleHTTPRequestHandler):
         else:
             super().do_POST()
 
-def start_scheduler():
-    """설정된 주기마다 백그라운드에서 크롤링을 자동 수행하는 스케줄러 스레드"""
-    print(f"[Scheduler] 백그라운드 자동 수집 스케줄러 시작 (주기: {config.MONITOR_INTERVAL}분)")
-    
-    # 서버 기동 즉시 Threads 최초 즉시 수집 수행
-    try:
-        print("[Scheduler] 서버 시작에 따른 Threads 최초 즉시 수집 시작")
-        run_crawl_once(platform="threads")
-    except Exception as init_err:
-        print(f"[Scheduler] Threads 최초 수집 중 에러 발생: {str(init_err)}")
-        
-    while True:
-        # 설정된 갱신 주기(분)를 초 단위로 계산하여 대기
-        interval_seconds = config.MONITOR_INTERVAL * 60
-        time.sleep(interval_seconds)
-        try:
-            print(f"[Scheduler] {config.MONITOR_INTERVAL}분 주기 자동 수집 시작")
-            run_crawl_once()
-        except Exception as scheduler_err:
-            print(f"[Scheduler] 자동 수집 에러 발생: {str(scheduler_err)}")
-
 def is_night_time():
     """현재 시각이 야간 시간대(00:00 ~ 07:00)인지 여부를 반환합니다."""
     current_hour = datetime.now().hour
     return 0 <= current_hour < 7
 
-def start_instagram_scheduler():
-    """인스타그램을 사람이 검색하는 것처럼 20분~35분 사이 랜덤한 주기로 자동 수집하는 스레드"""
-    print("[Scheduler] 인스타그램 랜덤 자동 수집 스케줄러 시작 (20분~35분 주기)")
+def run_integrated_crawl():
+    """모든 플랫폼(Threads, Naver, Youtube, Instagram, Twitter, Cafe)을 
+    순차적으로 수집하여 최종 1회만 데이터 저장 및 깃허브 업로드를 수행합니다."""
+    print(f"\n==================================================")
+    print(f" [{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] 통합 모니터링 수집 태스크 기동")
+    print(f"==================================================")
     
-    # Threads 수집과의 충돌 및 부하 분산을 위해 30초 대기 후 즉시 1회 수집 실행
-    print("[Scheduler] Threads 최초 수집과의 충돌 방지를 위해 30초 대기 후 Instagram 최초 수집을 시작합니다.")
+    # 1. 기존 데이터 로드
+    existing_posts = load_existing_data()
+    existing_ids = {post["post_id"] for post in existing_posts}
+    
+    new_posts_to_add = []
+    
+    # 수집할 플랫폼 리스트 구성
+    # 기본 플랫폼
+    platforms = ["threads", "naver", "youtube"]
+    
+    # 야간 시간대(00:00 ~ 07:00)가 아니면 나머지 플랫폼도 수집
+    if not is_night_time():
+        platforms.extend(["instagram", "twitter", "naver_cafe"])
+        
+    print(f"[Integrated Crawler] 수집 대상 플랫폼: {platforms}")
+    
+    # 각 플랫폼 순회하며 수집
+    for platform in platforms:
+        print(f"[Integrated Crawler] 플랫폼 '{platform}' 수집 중...")
+        for keyword in config.KEYWORDS:
+            try:
+                # scraper.run_scraper를 이용해 수집
+                scraped_results = scraper.run_scraper(keyword, platform=platform)
+                
+                new_kw_count = 0
+                for item in scraped_results:
+                    post_id = item["post_id"]
+                    
+                    if post_id in existing_ids:
+                        continue
+                        
+                    if "created_at" not in item or not item["created_at"]:
+                        item["created_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        
+                    new_posts_to_add.append(item)
+                    existing_ids.add(post_id)
+                    new_kw_count += 1
+                
+                print(f"[Integrated Crawler] '{keyword}' ({platform}) 결과: 신규 {new_kw_count}건 발견.")
+            except Exception as e:
+                print(f"[Integrated Crawler] '{keyword}' ({platform}) 수집 중 에러 발생: {str(e)}")
+            
+            # 플랫폼/키워드 간 안전 딜레이
+            delay = random.randint(5, 8)
+            print(f"[Integrated Crawler] 안전 대기 시간 {delay}초 부여...")
+            time.sleep(delay)
+            
+    # 모든 플랫폼의 수집이 완료된 시점에 딱 1번만 일괄 저장 및 깃허브 푸시
+    if new_posts_to_add:
+        updated_data = existing_posts + new_posts_to_add
+        save_data(updated_data)
+        print(f"[Integrated Crawler] 통합 수집 완료 및 업로드 시작. 신규 {len(new_posts_to_add)}개 글 갱신 적재 성공.")
+    else:
+        print("[Integrated Crawler] 통합 수집 완료. 새로 발견된 게시물이 없습니다.")
+
+def start_integrated_scheduler():
+    """설정된 주기마다 백그라운드에서 전체 플랫폼 통합 크롤링을 자동 수행하는 스케줄러"""
+    print(f"[Scheduler] 통합 자동 수집 스케줄러 시작 (주기: {config.MONITOR_INTERVAL}분)")
+    
+    # 서버 기동 30초 대기 후 최초 1회 통합 수집 실행 (서버 초기 부하 방지)
     time.sleep(30)
     try:
-        if is_night_time():
-            print("[Scheduler] 현재 시간은 야간 시간대(00:00~07:00)이므로 Instagram 최초 즉시 수집을 건너뜁니다.")
-        else:
-            print(f"[Scheduler] 서버 시작에 따른 Instagram 최초 즉시 수집 시작 ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-            run_crawl_once(platform="instagram")
+        print("[Scheduler] 서버 시작에 따른 최초 통합 즉시 수집 시작")
+        run_integrated_crawl()
     except Exception as init_err:
-        print(f"[Scheduler] Instagram 최초 즉시 수집 중 에러 발생: {str(init_err)}")
+        print(f"[Scheduler] 최초 통합 수집 중 에러 발생: {str(init_err)}")
         
     while True:
-        # 20분(1200초)에서 35분(2100초) 사이의 랜덤 딜레이 적용
-        next_interval = random.randint(20 * 60, 35 * 60)
-        minutes = next_interval // 60
-        seconds = next_interval % 60
-        print(f"[Scheduler] 다음 인스타그램 수집 대기 시간: {minutes}분 {seconds}초")
-        time.sleep(next_interval)
-        
-        if is_night_time():
-            print("[Scheduler] 현재 시간은 야간 시간대(00:00~07:00)이므로 Instagram 자동 수집을 건너뜁니다.")
-            continue
-            
-        try:
-            print(f"[Scheduler] 인스타그램 자동 수집 시작 ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-            run_crawl_once(platform="instagram")
-        except Exception as err:
-            print(f"[Scheduler] 인스타그램 자동 수집 중 에러 발생: {str(err)}")
-
-def start_naver_scheduler():
-    """네이버 블로그를 30분 주기로 자동 수집하는 스레드"""
-    print("[Scheduler] 네이버 블로그 자동 수집 스케줄러 시작 (30분 주기)")
-    
-    # 타 플랫폼 구동 충돌 및 부하 분산을 위해 60초 대기 후 1회 수집 즉시 실행
-    print("[Scheduler] 타 플랫폼 최초 수집과의 충돌 방지를 위해 60초 대기 후 네이버 블로그 최초 수집을 시작합니다.")
-    time.sleep(60)
-    try:
-        print(f"[Scheduler] 서버 시작에 따른 네이버 블로그 최초 즉시 수집 시작 ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-        run_crawl_once(platform="naver")
-    except Exception as init_err:
-        print(f"[Scheduler] 네이버 블로그 최초 즉시 수집 중 에러 발생: {str(init_err)}")
-        
-    while True:
-        # 10분(600초) 대기 후 반복 실행
-        interval_seconds = 10 * 60
+        # 설정된 주기를 초 단위로 계산하여 대기
+        interval_seconds = config.MONITOR_INTERVAL * 60
+        print(f"[Scheduler] 다음 통합 수집 대기 시간: {config.MONITOR_INTERVAL}분")
         time.sleep(interval_seconds)
         try:
-            print(f"[Scheduler] 네이버 블로그 10분 주기 자동 수집 시작 ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-            run_crawl_once(platform="naver")
-        except Exception as err:
-            print(f"[Scheduler] 네이버 블로그 자동 수집 중 에러 발생: {str(err)}")
-
-def start_youtube_scheduler():
-    """유튜브 동영상을 30분 주기로 자동 수집하는 스레드"""
-    print("[Scheduler] 유튜브 자동 수집 스케줄러 시작 (30분 주기)")
-    
-    # 타 플랫폼 구동 충돌 및 부하 분산을 위해 90초 대기 후 1회 수집 즉시 실행
-    print("[Scheduler] 타 플랫폼 최초 수집과의 충돌 방지를 위해 90초 대기 후 유튜브 최초 수집을 시작합니다.")
-    time.sleep(90)
-    try:
-        print(f"[Scheduler] 서버 시작에 따른 유튜브 최초 즉시 수집 시작 ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-        run_crawl_once(platform="youtube")
-    except Exception as init_err:
-        print(f"[Scheduler] 유튜브 최초 즉시 수집 중 에러 발생: {str(init_err)}")
-        
-    while True:
-        # 30분(1800초) 대기 후 반복 실행
-        interval_seconds = 30 * 60
-        time.sleep(interval_seconds)
-        try:
-            print(f"[Scheduler] 유튜브 30분 주기 자동 수집 시작 ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-            run_crawl_once(platform="youtube")
-        except Exception as err:
-            print(f"[Scheduler] 유튜브 자동 수집 중 에러 발생: {str(err)}")
-
-def start_twitter_scheduler():
-    """트위터(X)를 사람이 검색하는 것처럼 25분~40분 사이 랜덤한 주기로 자동 수집하는 스레드"""
-    print("[Scheduler] 트위터(X) 랜덤 자동 수집 스케줄러 시작 (25분~40분 주기)")
-    
-    # 타 플랫폼 최초 수집과의 충돌 방지를 위해 120초 대기 후 최초 수집 시작
-    print("[Scheduler] 타 플랫폼 최초 수집과의 충돌 방지를 위해 120초 대기 후 Twitter 최초 수집을 시작합니다.")
-    time.sleep(120)
-    try:
-        if is_night_time():
-            print("[Scheduler] 현재 시간은 야간 시간대(00:00~07:00)이므로 Twitter 최초 즉시 수집을 건너뜁니다.")
-        else:
-            print(f"[Scheduler] 서버 시작에 따른 Twitter 최초 즉시 수집 시작 ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-            run_crawl_once(platform="twitter")
-    except Exception as init_err:
-        print(f"[Scheduler] Twitter 최초 즉시 수집 중 에러 발생: {init_err}")
-        
-    while True:
-        # 25분(1500초)에서 40분(2400초) 사이의 랜덤 딜레이 적용
-        next_interval = random.randint(25 * 60, 40 * 60)
-        minutes = next_interval // 60
-        seconds = next_interval % 60
-        print(f"[Scheduler] 다음 트위터(X) 수집 대기 시간: {minutes}분 {seconds}초")
-        time.sleep(next_interval)
-        
-        if is_night_time():
-            print("[Scheduler] 현재 시간은 야간 시간대(00:00~07:00)이므로 Twitter 자동 수집을 건너뜁니다.")
-            continue
-            
-        try:
-            print(f"[Scheduler] 트위터(X) 자동 수집 시작 ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-            run_crawl_once(platform="twitter")
-        except Exception as err:
-            print(f"[Scheduler] 트위터(X) 자동 수집 중 에러 발생: {err}")
-
-def start_naver_cafe_scheduler():
-    """네이버 카페를 20분~35분 사이 랜덤한 주기로 자동 수집하는 스레드"""
-    print("[Scheduler] 네이버 카페 랜덤 자동 수집 스케줄러 시작 (20분~35분 주기)")
-    
-    # 타 플랫폼 최초 수집과의 충돌 방지를 위해 150초 대기 후 최초 수집 시작
-    print("[Scheduler] 타 플랫폼 최초 수집과의 충돌 방지를 위해 150초 대기 후 네이버 카페 최초 수집을 시작합니다.")
-    time.sleep(150)
-    try:
-        print(f"[Scheduler] 서버 시작에 따른 네이버 카페 최초 즉시 수집 시작 ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-        run_crawl_once(platform="naver_cafe")
-    except Exception as init_err:
-        print(f"[Scheduler] 네이버 카페 최초 즉시 수집 중 에러 발생: {init_err}")
-        
-    while True:
-        # 20분(1200초)에서 35분(2100초) 사이의 랜덤 딜레이 적용
-        next_interval = random.randint(20 * 60, 35 * 60)
-        minutes = next_interval // 60
-        seconds = next_interval % 60
-        print(f"[Scheduler] 다음 네이버 카페 수집 대기 시간: {minutes}분 {seconds}초")
-        time.sleep(next_interval)
-        
-        try:
-            print(f"[Scheduler] 네이버 카페 자동 수집 시작 ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-            run_crawl_once(platform="naver_cafe")
-        except Exception as err:
-            print(f"[Scheduler] 네이버 카페 자동 수집 중 에러 발생: {err}")
+            print(f"[Scheduler] {config.MONITOR_INTERVAL}분 주기 통합 자동 수집 시작")
+            run_integrated_crawl()
+        except Exception as scheduler_err:
+            print(f"[Scheduler] 통합 자동 수집 에러 발생: {str(scheduler_err)}")
 
 def start_server(port=8001):
     server_address = ('', port)
@@ -515,24 +438,9 @@ def start_server(port=8001):
 
     httpd = HTTPServer(server_address, LocalFilesHandler)
     
-    # [수정] 백그라운드 자동 수집 스케줄러 비활성화 (GitHub Pages 빌드 겹침 및 메일 알림 방지)
-    # scheduler_thread = threading.Thread(target=start_scheduler, daemon=True)
-    # scheduler_thread.start()
-    
-    # insta_scheduler_thread = threading.Thread(target=start_instagram_scheduler, daemon=True)
-    # insta_scheduler_thread.start()
-    
-    # naver_scheduler_thread = threading.Thread(target=start_naver_scheduler, daemon=True)
-    # naver_scheduler_thread.start()
-    
-    # youtube_scheduler_thread = threading.Thread(target=start_youtube_scheduler, daemon=True)
-    # youtube_scheduler_thread.start()
-    
-    # twitter_scheduler_thread = threading.Thread(target=start_twitter_scheduler, daemon=True)
-    # twitter_scheduler_thread.start()
-    
-    # naver_cafe_scheduler_thread = threading.Thread(target=start_naver_cafe_scheduler, daemon=True)
-    # naver_cafe_scheduler_thread.start()
+    # 통합 백그라운드 자동 수집 스케줄러 스레드 단 하나만 기동
+    integrated_scheduler_thread = threading.Thread(target=start_integrated_scheduler, daemon=True)
+    integrated_scheduler_thread.start()
     
     print(f"\n==================================================")
     print(f" [Server] 내장 API 및 대시보드 서버 기동 완료")
