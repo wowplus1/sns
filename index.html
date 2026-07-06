@@ -879,6 +879,10 @@
       <div>
         <h1 id="main-title">✈️ 제주여행 SNS 모니터링</h1>
         <div class="subtitle">Threads, Instagram, Twitter, Naver Cafe 등에서 수집된 최신 글을 모니터링합니다.</div>
+        <div id="collecting-keywords" style="display:flex; align-items:center; flex-wrap:wrap; gap:0.4rem; margin-top:0.6rem;">
+          <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">🎯 수집 키워드:</span>
+          <span style="font-size:0.8rem; color:var(--text-muted);">로딩 중...</span>
+        </div>
       </div>
       <div class="header-actions" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
         <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
@@ -2006,8 +2010,34 @@
   }
 
   // 화면 기동 시 로딩 시작
+  // 현재 수집 중인 키워드(keywords.json)를 헤더에 배지로 표시
+  async function loadKeywords() {
+    const box = document.getElementById('collecting-keywords');
+    if (!box) return;
+    try {
+      const res = await fetch(`keywords.json?t=${new Date().getTime()}`, { cache: 'no-store' });
+      if (!res.ok) throw new Error('keywords.json 응답 오류');
+      const meta = await res.json();
+      const kws = Array.isArray(meta.keywords) ? meta.keywords : [];
+      let html = `<span style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">🎯 수집 키워드:</span>`;
+      if (kws.length === 0) {
+        html += `<span style="font-size:0.8rem; color:var(--text-muted);">설정된 키워드가 없습니다.</span>`;
+      } else {
+        html += kws.map(k => `<span style="display:inline-block; padding:0.15rem 0.65rem; background:var(--primary); color:#fff; border-radius:999px; font-size:0.8rem; font-weight:700;">#${k}</span>`).join('');
+      }
+      if (meta.interval_minutes) {
+        html += `<span style="font-size:0.75rem; color:var(--text-muted); margin-left:0.3rem;">· ${meta.interval_minutes}분마다 자동 수집</span>`;
+      }
+      box.innerHTML = html;
+    } catch (e) {
+      console.warn('[Keywords] keywords.json 로드 실패:', e);
+      box.innerHTML = `<span style="font-size:0.8rem; color:var(--text-muted);">🎯 수집 키워드 정보를 불러올 수 없습니다.</span>`;
+    }
+  }
+
   window.onload = () => {
     loadData();
+    loadKeywords();
     initInstagramCooldown();
     initTwitterCooldown();
     initCafeCooldown();
