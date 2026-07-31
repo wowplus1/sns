@@ -1,6 +1,518 @@
 [
   {
     "platform": "Naver Cafe",
+    "post_id": "naver_cafe_sqlstation_1066",
+    "author": "제주도 서귀포 사람들 멤버",
+    "content": "[홍대빵집맛집 빵지순례로 들르기 좋은 추천 5곳] 달콤한 빵뿐 아니라 카레빵과 명란바게트, 야키소바빵처럼 한 끼로 먹을 만한 조리빵이 많습니다. 홍대 거리와 가까워 쇼핑이나 데이트 중 가볍게 들르기 좋고, 오전부터 운영해 비교적 이른 시간에도 이용할 수...",
+    "url": "https://cafe.naver.com/sqlstation/1066",
+    "created_at": "2026-07-31 17:40:07"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_idiolle_1881589",
+    "author": "제사모-제주도 대표카페 한달살기 숙소 제주여행 체험단 부동산 멤버",
+    "content": "[부모님 모시고 애월 화조원 가볍게 다녀왔네요] 주말에 부모님 모시고 어디 멀리 가긴 부담스러워서 애월 화조원으로 방향을 잡았습니다. 길이 워낙 평탄하고 조경이 잘 되어 있어서 어르신들 모시고 천천히 걷기 좋거든요. 마침 8월 23일까지 도민 9,900원 행사 기간이라...",
+    "url": "https://cafe.naver.com/idiolle/1881589",
+    "created_at": "2026-07-31 17:40:07"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_yeodampress_11855",
+    "author": "스마트관광신문 여담기자단 멤버",
+    "content": "[7월 자유기사(2) 나슬기 원고 피드백 부탁드립니다.] 함덕 일대를 여행하며 여유롭게 빵과 커피를 즐기고 싶다면 한 번쯤 들러볼 만한 빵지순례 코스로 추천한다. <다니쉬> 위치: 제주 제주시 조천읍 함덕16길 56 다니쉬 영업: 10:00~17:30 휴무: 매주 화요일, 수요일 주차: 가능...",
+    "url": "https://cafe.naver.com/yeodampress/11855",
+    "created_at": "2026-07-31 17:40:07"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_seogwipoguesthouse2_669642",
+    "author": "✅️제한라 제주도 한달살기 제주 보름살이 숙소 여행맛집렌트카 멤버",
+    "content": "[화조원 다녀왔는데 지금 도민 할인 중이네요] 어제 가족들이랑 애월 쪽 넘어갔다가 화조원에 잠깐 들렀습니다. 입구에서 표 끊으려고 보니까 7/25 ~ 8/23 까지 도민 대상 9,900원 이벤트 진행 중이네요. 성인이든 아이든 도민 신분만 확인되면 현장 결제로 9,900원에...",
+    "url": "https://cafe.naver.com/seogwipoguesthouse2/669642",
+    "created_at": "2026-07-31 17:40:07"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_dfdfwe_254631",
+    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
+    "content": "[제주 솔라시도 펜션 (갈만한곳,바다,액티비티) 할인 팁!] 깨끗하고 안전한 환경에서 평화로운 휴식을 취하고 싶은 분들에게 추천할 만한 장소입니다. 제주만의 독특한 매력을 느끼며, 삶의 번잡함에서 벗어나 진정한 힐링을 경험할 수 있을 것입니다. 제주 솔라시도 펜션 자동할인...",
+    "url": "https://cafe.naver.com/dfdfwe/254631",
+    "created_at": "2026-07-31 17:40:07"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_dfdfwe_254617",
+    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
+    "content": "[제주 히든 클리프 앤 네이처 (가볼만한곳,물놀이,해변) 할인 팁!] 오늘은 제주 히든 클리프 앤 네이처 비용에 대해 소개하는 시간을 가져보도록 하겠습니다. 제주 히든 클리프 앤 네이처 비용에 대해 궁금증을... 제주 히든 클리프 앤 네이처 자동할인 링크! [클릭] 제주 히든 클리프 앤...",
+    "url": "https://cafe.naver.com/dfdfwe/254617",
+    "created_at": "2026-07-31 17:40:07"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_o2community_495887",
+    "author": "★ 기아 타스만 공식 동호회 [타스만 멤버스] 가격 픽업트럭 멤버",
+    "content": "[에벤에셀 제주 함덕 할인 받고 예약하는 방법!] 에벤에셀에서 차로 조금 이동하면 한라산, 성산일출봉 등 유명 명소에 쉽게 갈 수 있습니다. 이 점 덕분에... 추천할 만한 곳입니다. 제주 여행을 계획하고 있다면 꼭 한번 들러보시길 바랍니다. 에벤에셀 제주 함덕 자동할인...",
+    "url": "https://cafe.naver.com/o2community/495887",
+    "created_at": "2026-07-31 17:40:07"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_dfdfwe_254502",
+    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
+    "content": "[켄싱턴리조트 제주중문 (가볼만한곳,숙박,야경) 할인 팁!] 오늘은 켄싱턴리조트 제주중문 비용에 대해 소개하는 시간을 가져보도록 하겠습니다. 켄싱턴리조트 제주중문 비용에 대해 궁금증을 갖고 계신... 켄싱턴리조트 제주중문 자동할인 링크! [클릭] 켄싱턴리조트 제주중문은...",
+    "url": "https://cafe.naver.com/dfdfwe/254502",
+    "created_at": "2026-07-31 17:40:07"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_eriadev_4920",
+    "author": "부산 스토리 | 맛집 가볼만한곳 병원 법률 부동산 육아 친목 멤버",
+    "content": "[삿뽀로투어 노랑풍선 패키지, 일정 팁과 예산 비교 포인트] 예를 들어, 2026년 7월 1일 출발은 티웨이항공, 7월 21일 출발은 제주항공으로 확인됩니다. 털게 무한리필과 해물 요리 — 신선한 해산물의 매력 노랑풍선 패키지에서는 털게 무한리필과 해물 요리를 즐길 수 있는 기회가...",
+    "url": "https://cafe.naver.com/eriadev/4920",
+    "created_at": "2026-07-31 17:40:07"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_dfdfwe_254487",
+    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
+    "content": "[제주 신신 천지연 (항공권,가볼만한곳,관광) 할인 팁!] 오늘은 제주 신신 천지연 비용에 대해 소개하는 시간을 가져보도록 하겠습니다. 제주 신신 천지연 비용에 대해 궁금증을 갖고 계신 분들이 제... 제주 신신 천지연 자동할인 링크! [클릭] 제주 신신 천지연의 매력 제주 신신...",
+    "url": "https://cafe.naver.com/dfdfwe/254487",
+    "created_at": "2026-07-31 17:40:07"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_dfdfwe_254393",
+    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
+    "content": "[머큐어 앰배서더 제주 (가볼만한곳,수영장,가족여행) 할인 팁!] 아름다운 자연 속에서 편안한 휴식을 원하는 이들에게 강력히 추천할 만한 곳이다. 머큐어 앰배서더 제주 자동할인 링크! [클릭] 머큐어 앰배서더 제주 비용에 대해 작성해보았습니다. 궁금증을 해소하려 찾아오신 분들에게...",
+    "url": "https://cafe.naver.com/dfdfwe/254393",
+    "created_at": "2026-07-31 17:40:07"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_freedogcat_1030022",
+    "author": "프리도그-강아지무료분양 고양이무료분양 유기견무료분양 사이트 멤버",
+    "content": "[제주여행견] 제주여행가서 모자랑 턱받이(?)ㅎㅎ 샀어요ㅎㅎ 제주 여행견ㅎㅎ",
+    "url": "https://cafe.naver.com/freedogcat/1030022",
+    "created_at": "2026-07-31 17:39:57"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_ungsangjang_861944",
+    "author": "부산 경남 맘스홀릭 육아 생활정보 체험단 이벤트 중고거래 멤버",
+    "content": "[제주공항 근처 흑돼지 여기 추천] 제주 3박 4일 여행의 마지막 날, 오후 4시 비행기를 앞두고 공항 가기 전 든든하게 배를 채울 곳을 찾고 있었어요. 렌터카를 반납하기 전이라 캐리어와 짐을 넉넉히 실을 수 있는 넓은 주차 공간이 있었으면 했고, 공항까지...",
+    "url": "https://cafe.naver.com/ungsangjang/861944",
+    "created_at": "2026-07-31 17:39:57"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_hkct_1139870",
+    "author": "국내여행 커뮤니티［바이트레인］ - 내일로 기차 여행 동행 해외 멤버",
+    "content": "[오늘 밤 부천 구워포차 새우 소금구이 드실분] 혹시 이시간에 드실분 있으면 구해봅니다~연락주세요 [가고자 하는 장소를 세곳 이상 작성하시면 여행감성이 맞는 분들 좀 더 쉽게 찾을 수 있어요] . [모집완료 후 완료 / 취소시 취소로 수정 | 게시물은 신용의...",
+    "url": "https://cafe.naver.com/hkct/1139870",
+    "created_at": "2026-07-31 17:39:57"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_joonggonara_1132669629",
+    "author": "중고나라 멤버",
+    "content": "[<7~8월> 한화 - 해운대, 대천 파로스, 평창, 산정호수 안시] 안전한 거래를 위한 중고나라의 판매업 검수를 완료한 '셀러회원 좋은여행BEST' 입니다 인터파크... 양평, 제주 *소노캄 - 거제, 여수, 경주, 고양, 제주 *소노문 해운대, 팔라티움 해운대 *파나크 영덕...",
+    "url": "https://cafe.naver.com/joonggonara/1132669629",
+    "created_at": "2026-07-31 17:39:57"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_modelgallery_2352",
+    "author": "모델갤러리 멤버",
+    "content": "[분당 마사지 잘하는곳 후기] 여행을 마치고 돌아온 뒤 충분히 쉬었는데도 몸이 쉽게 회복되지 않더라고요. 평소보다 허리가 묵직했고... 여행 이후 허리가 계속 무겁고 오래 앉아 있을 때 뻐근하다고 말씀드리니 제 컨디션에 맞는 방향을 하나씩...",
+    "url": "https://cafe.naver.com/modelgallery/2352",
+    "created_at": "2026-07-31 17:39:57"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_zzop_4152290",
+    "author": "나트랑 도깨비 - 베트남 나트랑 자유여행,무이네,달랏,맛집,호텔 멤버",
+    "content": "[패스트트랙신청] 예) 비엣젯-VJ875, 제주항공-7C2903, 대한항공-KE457 등 ────────── 2️⃣ 나트랑 출국 한국 귀국 ✏️깜란 공항 출발 날짜(도착일X) : 2026.08.08 ✏️항공편명 : KE468 ✏️깜란 공항 출발 시간...",
+    "url": "https://cafe.naver.com/zzop/4152290",
+    "created_at": "2026-07-31 17:39:57"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_hkct_1139869",
+    "author": "국내여행 커뮤니티［바이트레인］ - 내일로 기차 여행 동행 해외 멤버",
+    "content": "[7/31 부산 저녁 맛집 동행] 쪽지확인이 어려워 오픈톡 대화 주세요 https://open.kakao.com/o/sMS52CGi ※ 하고싶은말 : [가고자 하는 장소를 세곳 이상 작성하시면 여행감성이 맞는 분들 좀 더 쉽게 찾을 수 있어요] . [모집완료 후 완료 / 취소시 취소로...",
+    "url": "https://cafe.naver.com/hkct/1139869",
+    "created_at": "2026-07-31 17:39:57"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_zzop_4152283",
+    "author": "나트랑 도깨비 - 베트남 나트랑 자유여행,무이네,달랏,맛집,호텔 멤버",
+    "content": "[9월 항공권 예약했어요!] 9/10-14일 제주에어 35만원에 결제햤어요!! 8월부터 라운지 혜택카드 실적 채우면서 여행 준비 해야겠습니돠~ ㅎㅎ",
+    "url": "https://cafe.naver.com/zzop/4152283",
+    "created_at": "2026-07-31 17:39:57"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_sjdia76_325355",
+    "author": "하노이 도깨비- 베트남하노이 자유여행,호텔,마사지,맛집,항공권 멤버",
+    "content": "[패스트트랙 신청합니다.] 예) 비엣젯-VJ961, 제주항공-7C2201, 대한항공-KE441 등 ────────── 2️⃣ 하노이 출국 한국 귀국 ✏️노이바이 공항 출발 날짜(도착일X) : ✏️항공편명 : ✏️노이바이 공항 출발 시간...",
+    "url": "https://cafe.naver.com/sjdia76/325355",
+    "created_at": "2026-07-31 17:39:57"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_yee803000_25961",
+    "author": "셀프 소개팅 - 소개팅 글 하나로 시작되는 인연 멤버",
+    "content": "[자유로운 라이프스타일을 함께할 인연을 찾습니다] 제목 셀프 소개팅 / 대구 / 96년생 / 여자 / 온라인 쇼핑몰 운영 / 함께 성장하고 여행할 인연을 찾고 있어요... 인천 경기 수원 부산 충남 제주 대구 강원 전남 압구정 경북 세종 울산 강남 서귀포 광주 충북 경남 전북 대전]",
+    "url": "https://cafe.naver.com/yee803000/25961",
+    "created_at": "2026-07-31 17:39:57"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_happyibook_6220610",
+    "author": "다낭 도깨비 - 베트남 다낭자유여행 ,다낭여행,맛집,호텔리조트 멤버",
+    "content": "[공항에서 남호이안이동할때] 이번여행을 호이안에서 2박 다낭 3박을 하는데 첫날 호이안 2박을 마음에드는 리조트를 예약하다보니... 공항편이 제주항공 낮에 오후 12시10분에 도착을 해서 스트레스 받게 그랩잡는것보다는... 예약을 미리하고싶은데...",
+    "url": "https://cafe.naver.com/happyibook/6220610",
+    "created_at": "2026-07-31 17:39:57"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_surfsurfwoljeong_771",
+    "author": "월정서프서프 멤버",
+    "content": "[[ 제주도 서핑] 월정리 서핑 월정서프서프 20260731 오후 3시 30분 강습사진] 증정 #제주서핑 #제주도서핑 #제주여행 #제주도서핑게스트하우스 #월정리해변 #월정리서핑게스트하우스 #서핑강습 #제주서핑강습 #유소년서핑강습 #어린이서핑 #월정서핑 #서프서프 #월정리서핑 #제주월정리서핑...",
+    "url": "https://cafe.naver.com/surfsurfwoljeong/771",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_seogwipoguesthouse2_669648",
+    "author": "✅️제한라 제주도 한달살기 제주 보름살이 숙소 여행맛집렌트카 멤버",
+    "content": "[출석합니다~] ✅✅제한라 베네핏 이용해서 숙소 & 탁송 저렴하게 예약하세요 이제 곧 주말이네요 즐거운 금요일 보내세요~!",
+    "url": "https://cafe.naver.com/seogwipoguesthouse2/669648",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_seogwipoguesthouse2_669647",
+    "author": "✅️제한라 제주도 한달살기 제주 보름살이 숙소 여행맛집렌트카 멤버",
+    "content": "[날씨 미쳤다 진짜] ✅✅제한라 베네핏 이용해서 숙소 & 탁송 저렴하게 예약하세요 날씨가 진짜 너무 덥네요 진짜로",
+    "url": "https://cafe.naver.com/seogwipoguesthouse2/669647",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_seogwipoguesthouse2_669646",
+    "author": "✅️제한라 제주도 한달살기 제주 보름살이 숙소 여행맛집렌트카 멤버",
+    "content": "[안녕하세요] 가입인사 드려요 안녕하세요!",
+    "url": "https://cafe.naver.com/seogwipoguesthouse2/669646",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_mohaengstory_105479",
+    "author": "[모햅] MoHappy 모이면 해피한 여행 멤버",
+    "content": "[안녕하세요] 예) 여행 정보 보러 / 체험단 참여 / 소통 체험단 참여 및 정보 공유를 위해 ♀️ 간단한 소개 예) 주말마다 맛집 찾아다니는 직장인이에요 뷰티, 여행에 관심 많은 블로거입니다 ✈️ 요즘 가고 싶은 여행지 예) 제주도...",
+    "url": "https://cafe.naver.com/mohaengstory/105479",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_travelworldtip_294",
+    "author": "트레블_세계팁 멤버",
+    "content": "[제주 샐리스호텔 휴가 가성비 숙소 찾다가 발견했는데 여길 왜 이제 알았나....] 이번에 제주도 애월 쪽으로 여름 휴가 계획 짜면서 숙소 엄청... [제주 샐리스호텔] 당일 특가 확인하기 >> 실제 다녀온 사람들 후기 보니까... 객실도 가격 대비 생각보다 훨씬 넓고 깔끔해서 아이 있는 가족 여행이나 커플...",
+    "url": "https://cafe.naver.com/travelworldtip/294",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_dailytour1_3242",
+    "author": "여소남 - 허니문 / 리조트 / 크루즈 / 패키지 / 골프 멤버",
+    "content": "[빅아일랜드 화산국립공원 일정, 렌터카 이동 시간과 숙소 선택 기준] 하와이 빅아일랜드 여행을 준비할 때 가장 많이 물어보시는 코스가 바로 화산국립공원입니다. 보통 서쪽 코나... 이동 피로를 줄이는 동쪽 지역 숙소 배분 빅아일랜드는 제주도보다 면적이 훨씬 넓기 때문에 한 곳의...",
+    "url": "https://cafe.naver.com/dailytour1/3242",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_seogwipoguesthouse2_669645",
+    "author": "✅️제한라 제주도 한달살기 제주 보름살이 숙소 여행맛집렌트카 멤버",
+    "content": "[제주도 보름살이 계획중입니다] 다니던 직장 퇴사하고 리프레시하는 마음으로 9월이나 10월쯤 제주도에 내려가서 보름이나 한달정도... 고민되고 생각이 많아지네요. 최대한 제 기준에 맞는 곳 잘 찾아서 제주살이 오길 잘 했다는 마음으로 다녀오고싶어요",
+    "url": "https://cafe.naver.com/seogwipoguesthouse2/669645",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_jejudohdskps_15309",
+    "author": "제주도여행한달살기숙소무료홍보회원할인혜택 멤버",
+    "content": "[제주도한달살기숙소책방 향로] 갤러리제주도유 #일본도자기#아리타야끼#중국국도자기기#마시꼬#가사마... 삼춘책방#제주풀무질#제주살롱#시인의집#아무튼책방#한뼘책방#책가방... 푸근한곰아저씨#여행가게#북타임#취향의섬북앤띵즈#부키나스트북스...",
+    "url": "https://cafe.naver.com/jejudohdskps/15309",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_hotellife_1967976",
+    "author": "[스사사] 스마트컨슈머들의 호텔/항공/VIP카드/여행 이야기 멤버",
+    "content": "[제주도 숙소고민] 꼭 읽고 지켜주세요 안녕하세요 내년2월 제주여행을 계획하고있습니다. 구성인원은 성인2 만3세, 만0세 4인구성입니다. 이른감이 있지만 jw를 포숙으로 미리 해놔야해서 빨리 찾아보고있네요. jw2박은 고정이고 2박을...",
+    "url": "https://cafe.naver.com/hotellife/1967976",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_myguesthouse_1019246",
+    "author": "제주도 게스트하우스 여행자모임 - 니잘못이아니야 멤버",
+    "content": "[제주도 날씨] 요즘 같은 날씨에 제주도 바다에서 서핑이나 물놀이 하면 딱일거 같은데 너무 더워도 문제이려나...",
+    "url": "https://cafe.naver.com/myguesthouse/1019246",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_jejutip_2659129",
+    "author": "[느영나영] 제주도여행 대표카페 제주맛집 렌터카 숙소 여행지도 멤버",
+    "content": "[렌트카 보험] 일반면책이랑 슈퍼면책이 있던데 슈퍼면책 안들어도 될까요? 그리고 엔* 렌트카 처음 이용하는데 괜찮나요?",
+    "url": "https://cafe.naver.com/jejutip/2659129",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_no1cheonan_4313457",
+    "author": "천안아산줌마렐라 [천안.아산 대표지역카페, 정보.교육.부동산] 멤버",
+    "content": "[다자녀 무료 키즈카페] 여긴 제주도 놀러오면 꼭 가는 곳이에요 어린이관에 있는 놀이터인데 2자녀면 다자녀라 입장료도 무료고 초 2까지 가능해요! 천안과 아산의 모든정보와 살아가는 이야기가 모여있는 온라인 커뮤니티 [천안아산줌마렐라]",
+    "url": "https://cafe.naver.com/no1cheonan/4313457",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_myguesthouse_1019245",
+    "author": "제주도 게스트하우스 여행자모임 - 니잘못이아니야 멤버",
+    "content": "[안녕하세요] 가입인사드립니다 안녕하세요~!",
+    "url": "https://cafe.naver.com/myguesthouse/1019245",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_jejutip_2659128",
+    "author": "[느영나영] 제주도여행 대표카페 제주맛집 렌터카 숙소 여행지도 멤버",
+    "content": "[9.10.11 잡았는데 뱅기뜰까요? 바다수영 목적으로 가는건데 심란 ㅠㅠ] 7월에 가려던거 8월초에 갈라다가 비싸서 9.10.11 잡았더니 웬 태풍 ㅠㅠ",
+    "url": "https://cafe.naver.com/jejutip/2659128",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_bluegraydnbk8_135099",
+    "author": "코리아클라쓰 멤버",
+    "content": "[고성 도원리계곡] 강원특별자치도 고성군 토성면에 위치한 도원리계곡은 많이 알려지지 않은 숨은 명소지만, 한번 찾은 사람은 꾸준히 찾게 된다는 물이 맑고 깨끗한 계곡이다. 물살이 세지 않고 깊이가 얕아 어린이들과 함께...",
+    "url": "https://cafe.naver.com/bluegraydnbk8/135099",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_travelworldtip_292",
+    "author": "트레블_세계팁 멤버",
+    "content": "[제주신화월드 8월 호캉스 룸타입 고민하다가 특가 뜬 거 보고 깜짝 놀람ㅋ....] 8월 휴가철 맞춰서 가족들이랑 제주도로 넘어가려고 숙소 알아보는 중인데 제주신화월드 8월 호캉스 자리가 생각보다 진짜 빠르게 빠지더라고요. 신화관이랑 메리어트 중에서 어디로 잡아야 할지 고민하다가 하루가 다...",
+    "url": "https://cafe.naver.com/travelworldtip/292",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_hyjnavercom_268469",
+    "author": "[멘또] 제주도 한달살기 숙소 비용 제주 보름살기 한달살이 탁송 멤버",
+    "content": "[안녕하세요!] 안녕하세요:) 바다가 없는 해외에 거주중인데 내년 제주도 한달 살이 하면서 원없이 바다 보고 놀고 싶네요. 아이와 함께 가서 지내보려고요! 많은 정보 부탁드립니다 :)",
+    "url": "https://cafe.naver.com/hyjnavercom/268469",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_myguesthouse_1019244",
+    "author": "제주도 게스트하우스 여행자모임 - 니잘못이아니야 멤버",
+    "content": "[8월달 함께하실분 모집합니다 / 제주 동쪽 메르블루게스트하우스에서 남여....] 제주도 동쪽에 위치한 즐거운 파티&오션뷰 제주도게스트하우스 @메르블루게스트하우스@에서 7~8월달... 제쳐두고 제주여행을 하고 싶은 분들 메르블루게스트하우스 많은 지원 바랍니다. @@ SNS좋아하시는분, 요리...",
+    "url": "https://cafe.naver.com/myguesthouse/1019244",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_seogwipoguesthouse2_669644",
+    "author": "✅️제한라 제주도 한달살기 제주 보름살이 숙소 여행맛집렌트카 멤버",
+    "content": "[아이랑 제주도 가볼만한곳 제주한달살기 여행 제주도 체험 행사] #제주도가볼만한곳 #제주도체험 #아이랑제주체험 #제주여행8월 #제주한달살기 #8월제주도여행 아이랑 제주도 가볼만한곳 제주 한달살기 나 제주여행 제주도 체험행사 입니다 ✅✅ 제주 한달라이프 인 제한라 베네핏...",
+    "url": "https://cafe.naver.com/seogwipoguesthouse2/669644",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_seogwipoguesthouse2_669643",
+    "author": "✅️제한라 제주도 한달살기 제주 보름살이 숙소 여행맛집렌트카 멤버",
+    "content": "[제주한달살기 준비 중입니다 ㅎㅎ] 시간으로 제주한달살기를 할꺼에요ㅎㅎ! 매일 올레길 걷고 바다 보면서 머릿속을 싹 비우고 올 생각인데요 혼자 떠나는 제주한달살기이다 보니... 혼자 제주한달살기 한달 총비용 다들 얼마정도 드셨을까여?? 다들 오늘...",
+    "url": "https://cafe.naver.com/seogwipoguesthouse2/669643",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_idiolle_1881591",
+    "author": "제사모-제주도 대표카페 한달살기 숙소 제주여행 체험단 부동산 멤버",
+    "content": "[[이도일동] 무권리/칼호텔인근/중앙로접/1층/30평대/사무실/학원/상가/임대] 주소 : 제주 제주시 이도일동 건축물용도 : 제1종근린생활시설 사용승인일 :2012-04-23 면적... com/jejudogongsil ⭐제주오일장⭐ https://jejuall.com/CProperty/myHome?num=186162 ⭐제주교차로⭐ https://lwj7942....",
+    "url": "https://cafe.naver.com/idiolle/1881591",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_dfdfwe_254796",
+    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
+    "content": "[더 베스트 제주 성산 (동쪽 가성비 숙소,오션뷰,후기) 할인 팁!] 성산일출봉 근처의 마을에서는 제주 특유의 농산물을 직접 구입하거나, 제주 전통 음식을 체험할 수 있는 프로그램이 운영되고 있다. 이런 경험을 통해 여행자들은 제주도만의 매력을 더욱 깊이 이해하게 된다. 가까운...",
+    "url": "https://cafe.naver.com/dfdfwe/254796",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_jejudohdskps_15308",
+    "author": "제주도여행한달살기숙소무료홍보회원할인혜택 멤버",
+    "content": "[천하일품 18,900원 서귀포제철감귤 많이이용해주세요 제주도한달살기숙소] 공정여행 카페입니다. #제주도한달살기 #제주도한달살기숙소 #제주도한달살기비용... 제주도여행 #제주도펜션#제주도여행동영상 #제주스냅투어 #국립제주박물관#감귤박물관#기당미술관#이중섭미술관...",
+    "url": "https://cafe.naver.com/jejudohdskps/15308",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_myguesthouse_1019242",
+    "author": "제주도 게스트하우스 여행자모임 - 니잘못이아니야 멤버",
+    "content": "[(남스텝구인)개꿀자리났음 계란말이만 할 줄 알면 됌] 걍 이 사람은 님들 친구임 무려 한국 나이 28살 제주도 사는 형,오빠... 되었다면, 제주를 다 누빌만큼의 휴무도 얻을 수 있어요. 적당한 게스트... 넘어지면 닿을 여행자들과 함께하니 일보다 사람과 시간을 배우게...",
+    "url": "https://cafe.naver.com/myguesthouse/1019242",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_jejutip_2659127",
+    "author": "[느영나영] 제주도여행 대표카페 제주맛집 렌터카 숙소 여행지도 멤버",
+    "content": "[조천 애기들 물놀이+물고기구경? 스팟 추천해용] 지금 묵고있는 조천 숙소 바로 앞이에요 물고기 진짜 많죠 ~ 밑에 사진은 물빠진 상태이고, 물 차니까 애들 허리춤 높이인 곳도 있고 아예 발 안닿는곳도 있고 합니다 ㅎㅎ 물 빠졌을땐데 이때도 어린애기들 놀기...",
+    "url": "https://cafe.naver.com/jejutip/2659127",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_directwedding_9218210",
+    "author": "다이렉트 결혼준비 멤버",
+    "content": "[협재 맛집 협재칼국수 다녀왔어요] 이번 제주도 여행에는 보말칼국수를 꼭 먹어보자 다짐했는데 둘째날 아침에 눈 뜨자마자 오픈런으로 다녀왔어요!!",
+    "url": "https://cafe.naver.com/directwedding/9218210",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_engmstudy_3163987",
+    "author": "● 짠돌이카페 ● 짠돌이부자되기(재테크,절약,보험료줄이기) 멤버",
+    "content": "[제주삼다수 삼제페 탐나는전 5만원 당첨] 삼다수 물 구매하고 제주도에서 쓸 수 있는 지역상품권 5만원 당첨이네요^^ 한번도 안주다가 마지막날 주다니ㅎㅎ 감사합니다",
+    "url": "https://cafe.naver.com/engmstudy/3163987",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_ducksolove_2990",
+    "author": "어디가멩, 제주 멤버",
+    "content": "[빵순이] 빵사왔어요~ 종류별로 ^^",
+    "url": "https://cafe.naver.com/ducksolove/2990",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Naver Cafe",
+    "post_id": "naver_cafe_ovsc_69204",
+    "author": "오름 패밀리 멤버",
+    "content": "[백록담과 함께.. 관음사 코스] 제주항을 떠나는 배 제주로 날아드는 뱅기까지 선명하게.. 땡겨 찍더보니 흐릿하긴하지만 환장하게 이쁜...ㅋㅋㅋㅋㅋ 신비스러운 동쪽오름들과 제가 애정하는 장구목을 마지막으로 눈에 담으며 안전하게 하산...",
+    "url": "https://cafe.naver.com/ovsc/69204",
+    "created_at": "2026-07-31 17:39:48"
+  },
+  {
+    "platform": "Instagram",
+    "post_id": "instagram_Dbc1lvnE2hk",
+    "author": "1052da.jeju",
+    "content": "⬅️⬅️⬅️ #제주도 \n실시간 동화마을은 유럽수국이 만개해 너무 예쁘구요...🤍🥰\n스튜디오 지브리展도 진행중이니 제주시라면 지금 들려보시기 딱 좋을듯요...😄🙏\n(촬영일자 : 26.07.29)\n.\n.\n.\n.\n👉 장소 : 동쪽송당 동화마을 \n👉 위치 : 구좌읍 송당리 2635-3 \n.\n.",
+    "url": "https://www.instagram.com/p/Dbc1lvnE2hk/",
+    "created_at": "2026-07-31 17:29:21"
+  },
+  {
+    "platform": "Threads",
+    "post_id": "threads_Dbc1cRCGvfc",
+    "author": "backtome__j",
+    "content": "여튼 이곳 추천받아서 !!!!!!!!!! \n아무것도 모르고 그냥 찾아갔는데 예약안해서 \n헛걸음 할 뻔 했어요 ㅠㅠㅠ \n오시는분들 다 예약하시고 방문하시는거더라구요\n그래도 다행히 직원분이 혼자오신 저를 \n구제해주셔서 ㅎㅎㅎㅎ \n30분 기다리시면 안내해드리겠다고해서 \n30분 기다리고 먹을 수 있었어요 !!!! \n꼭 가기전에 예약하시고 가세요 ㅎㅎ",
+    "url": "https://www.threads.net/@backtome__j/post/Dbc1cRCGvfc",
+    "created_at": "2026-07-31 17:28:03"
+  },
+  {
+    "platform": "Threads",
+    "post_id": "threads_Dbc1K_eGLbu",
+    "author": "koko.cultureclub",
+    "content": "✔ 코코프리미어리조트 숙박 고객 전용 혜택\n✔ 코코컬처클럽 인피니티풀 무료 이용\n✔ 오션뷰 카페 & 베이커리\n✔ 로컬 씨푸드 레스토랑 이용 가능\n✔ 제주 바다와 함께하는 최고의 휴식",
+    "url": "https://www.threads.net/@koko.cultureclub/post/Dbc1K_eGLbu",
+    "created_at": "2026-07-31 17:25:44"
+  },
+  {
+    "platform": "Threads",
+    "post_id": "threads_Dbc0t_HD0hD",
+    "author": "gaaaaaeun7209",
+    "content": "제주여행  필수품  보냉백!!!\n배우신분!!",
+    "url": "https://www.threads.net/@gaaaaaeun7209/post/Dbc0t_HD0hD",
+    "created_at": "2026-07-31 17:21:44"
+  },
+  {
+    "platform": "Threads",
+    "post_id": "threads_Dbc0rknkzSC",
+    "author": "south_sagae_jeju",
+    "content": "제주의 포지타노 아말피 \n우리스테이에서 🚗 15분",
+    "url": "https://www.threads.net/@south_sagae_jeju/post/Dbc0rknkzSC",
+    "created_at": "2026-07-31 17:21:24"
+  },
+  {
+    "platform": "Threads",
+    "post_id": "threads_Dbc0NwsEQRh",
+    "author": "mi.mi_vintage",
+    "content": "* 주차는 매장 주변, 하귀 문화의집에 주차하시면 됩니다.\n* 옷에 소량의 꼬순내가 묻어 있을 수 있습니다.\n미미빈티지 (애월 하귀)\n제주시 애월읍 하귀로 23길 8 (빨간대문집)",
+    "url": "https://www.threads.net/@mi.mi_vintage/post/Dbc0NwsEQRh",
+    "created_at": "2026-07-31 17:17:22"
+  },
+  {
+    "platform": "Threads",
+    "post_id": "threads_Dbcz_14Ajzc",
+    "author": "sseon.r",
+    "content": "100% 제주산 흑돼지와 24시간 이상 \n정성껏 우려낸 진한 사골 육수로 만든 고기국수는\n깔끔하면서도 깊은 맛이 인상적이었습니다. \n고기 듬뿍 들어간 돼지국밥과 \n고소한 참기름 향이 살아있는 비빔국수도 만족스러웠고, \n넓은 주차장과 아기의자, 유아식기 등 \n가족을 위한 편의시설까지 잘 갖춰져 있어 \n아이와 함께 방문하기에도 편안했습니다",
+    "url": "https://www.threads.net/@sseon.r/post/Dbcz_14Ajzc",
+    "created_at": "2026-07-31 17:15:32"
+  },
+  {
+    "platform": "Threads",
+    "post_id": "threads_Dbcz73vE5ib",
+    "author": "south_sagae_jeju",
+    "content": "제주가볼만한곳",
+    "url": "https://www.threads.net/@south_sagae_jeju/post/Dbcz73vE5ib",
+    "created_at": "2026-07-31 17:14:53"
+  },
+  {
+    "platform": "Threads",
+    "post_id": "threads_DbczTIqE9uB",
+    "author": "hanamizzuki",
+    "content": "이걸먹어야 제주여행이 완전히 끝나는거에오\n저녁으로 김만복먹으려고 작은보냉백까지 챙겨온 이 돼지런함",
+    "url": "https://www.threads.net/@hanamizzuki/post/DbczTIqE9uB",
+    "created_at": "2026-07-31 17:09:20"
+  },
+  {
+    "platform": "Instagram",
+    "post_id": "instagram_Dbcy-awE0KK",
+    "author": "trekking_1933",
+    "content": "지난 1차휴가 제주여행 - #섭지코지 \n\n이게 몇년 만인지..ㅎㅎ\n많이 변했네\n\n성산일출봉을 감싼 해무가 참 신기했음\n\n#제주여행 #여행스타그램 #jejuisland #일상소통",
+    "url": "https://www.instagram.com/p/Dbcy-awE0KK/",
+    "created_at": "2026-07-31 17:06:30"
+  },
+  {
+    "platform": "Threads",
+    "post_id": "threads_Dbcwxmjk4ew",
+    "author": "kim.in.ki",
+    "content": "#제주야간명소\n#제주가볼만한곳\n#루나폴\n#제주산책\n.",
+    "url": "https://www.threads.net/@kim.in.ki/post/Dbcwxmjk4ew",
+    "created_at": "2026-07-31 16:47:18"
+  },
+  {
+    "platform": "Instagram",
+    "post_id": "instagram_Dbcv7KOyJy6",
+    "author": "happy_moonstar",
+    "content": "애월까지 일부러 달려가는 이유, \n직접 다녀와 보니 바로 이해됐습니다.\n\n참나무 장작으로 훈연한 흑돼지는 한 점 씹을수록 은은한 불향과 고소함이 차곡차곡 올라오고, 그릴링 마스터가 가장 맛있는 타이밍에 구워주니 젓가락을 내려놓을 틈이 없었습니다.\n\n이번에 주문한 런치 A세트는 흑돼지에 해산물 가득한 된장찌개, 폭신한 계란찜, 공깃밥까지 포함인데 65,000원.\n\n3~4명이 함께 먹기에도 부족함 없는 구성이라 제주에서 가성비 좋은 흑돼지를 찾는다면 충분히 만족할 만한 선택이었습니다.\n\n비 오는 날이라 더 운치 있었던 애월.\n창밖의 빗소리를 들으며 따뜻한 고기 한 점을 먹고 있으니 제주 여행이 더 오래 기억에 남더라고요.\n\n애월에서 흑돼지를 고민하고 있다면 이곳은 한 번 저장해 두세요.\n\n📍금돈가 제주 애월해안도로 본점\n제주 제주시 애월읍 가문동남길 63 1층\n\n#금돈가 #금돈가애월해안도로본점 \n#애월흑돼지 #제주흑돼지 #애월맛집",
+    "url": "https://www.instagram.com/p/Dbcv7KOyJy6/",
+    "created_at": "2026-07-31 16:40:40"
+  },
+  {
+    "platform": "Naver Cafe",
     "post_id": "naver_cafe_triptomeet_37261",
     "author": "또나여 교사 카페 행복한 경험을 교실로 잇다 멤버",
     "content": "[제주입니다!] #또나여 빅3 여행사 365일 할인 신청 https://cafe.naver.com/f-e/cafes/30274326/menus/1 ㅎㅎ 몇 년만에 제주인지! ㅎㅎ 지인이 제주도에 2주살이 하는데 술 먹다가 이야기 나와서 이래저래 모여서 왔습니다! ㅎㅎ 오늘은...",
@@ -1785,6 +2297,14 @@
   },
   {
     "platform": "Threads",
+    "post_id": "threads_DbcS7LWiKwO",
+    "author": "jejudo_traveler",
+    "content": "오레브 핫스프링앤스파키즈풀에서 노천탕, 사우나까지 모든 온탕에 온천수를 사용 굴착심도 2,003m 국내 최대 깊이로 우수한 온천 성분 유리탄산 Free CO2 를 활용 치료목적 (혈액순환, 고혈압, 심장질화, 동맥경화 치료)과 심신요양에 도움",
+    "url": "https://www.threads.net/@jejudo_traveler/post/DbcS7LWiKwO",
+    "created_at": "2026-07-31 12:26:41"
+  },
+  {
+    "platform": "Threads",
     "post_id": "threads_DbcSyu3gPXV",
     "author": "lovehyunyoung",
     "content": "#여행 #제주 #제주여행 #현영 #jeju",
@@ -3360,6 +3880,22 @@
     "created_at": "2026-07-31 08:30:51"
   },
   {
+    "platform": "YouTube",
+    "post_id": "youtube_LjiYmDtS094",
+    "author": "부산ON나 Busan ONna Travel",
+    "content": "[푸른 바다와 하얀 풍차가 만드는 완벽한 풍경, 제주 신풍풍차해안 드라이브 코스로도 좋아요 #신풍풍차해안 #제주여행 #제주해안도로 #제주드라이브코스 #제주가볼만한곳] 알 사람만 아는 제주 숨은 비경, 신풍풍차해안의 눈부신 풍경을 담아왔습니다. 탁 트인 푸른 바다와 거대한 풍차가 어우러져 이국적인 ...",
+    "url": "https://www.youtube.com/watch?v=LjiYmDtS094",
+    "created_at": "2026-07-31 08:30:00"
+  },
+  {
+    "platform": "YouTube",
+    "post_id": "youtube_vo_eR-nBU8c",
+    "author": "정원의 갤러리",
+    "content": "[제주 여행#서커스공연#예술]",
+    "url": "https://www.youtube.com/watch?v=vo_eR-nBU8c",
+    "created_at": "2026-07-31 08:29:31"
+  },
+  {
     "platform": "Threads",
     "post_id": "threads_Dbb3AN5ExNK",
     "author": "dogeonho74",
@@ -3376,12 +3912,36 @@
     "created_at": "2026-07-31 08:15:34"
   },
   {
+    "platform": "YouTube",
+    "post_id": "youtube_yOBQuO8huc4",
+    "author": "동현이넷",
+    "content": "[김동현과 아들의 단둘이 떠난 제주도 여행 EP.2 ✈️ (+아빠와 만든 특별한 추억 🌊)] 단우와 함께한 2박 3일 제주 여행의 마지막 이야기! ✈️ 금능해수욕장에서 꽃게도 잡고, 아이들이 좋아하는 키즈 카페에서 신나게 ...",
+    "url": "https://www.youtube.com/watch?v=yOBQuO8huc4",
+    "created_at": "2026-07-31 08:15:32"
+  },
+  {
+    "platform": "YouTube",
+    "post_id": "youtube_9DuU5CrYYPc",
+    "author": "더 물류",
+    "content": "[2026년 오싹한 공포체험 BEST 6 👹 | 가볼만한곳 | 주말 | 여행 | 여름휴가 | 공포] 안녕하세요 더물류입니다. 오늘 영상은 오싹한 전국 공포체험 6곳를 알아보겠습니다. 이 콘텐츠는 인공지능 가상 연기자 서비스, ...",
+    "url": "https://www.youtube.com/watch?v=9DuU5CrYYPc",
+    "created_at": "2026-07-31 08:15:27"
+  },
+  {
     "platform": "Threads",
     "post_id": "threads_Dbb1uewkzva",
     "author": "lovelyhouzze",
     "content": "비행기 시간은 얼마 안 남았고,\n계속 기다려야 할지 가야 할지 고민 중…✈️",
     "url": "https://www.threads.net/@lovelyhouzze/post/Dbb1uewkzva",
     "created_at": "2026-07-31 08:11:21"
+  },
+  {
+    "platform": "YouTube",
+    "post_id": "youtube_vjuN307Cebk",
+    "author": "민감한 슈",
+    "content": "[성수기 제주도 오션뷰 4만원대 펜션 찾았다] 성수기 제주도 오션뷰 펜션이 4만원대? 처음에는 가격 보고 기대를 안 했는데, 오션뷰 객실에 깔끔한 컨디션까지 갖춘 곳이라 가성 ...",
+    "url": "https://www.youtube.com/watch?v=vjuN307Cebk",
+    "created_at": "2026-07-31 08:06:33"
   },
   {
     "platform": "Threads",
@@ -3392,12 +3952,36 @@
     "created_at": "2026-07-31 08:04:31"
   },
   {
+    "platform": "YouTube",
+    "post_id": "youtube_nZmxH5Vyw4c",
+    "author": "민감한 슈",
+    "content": "[비오는날 제주도? 방탈출 테마파크!] https://m.blog.naver.com/elwpdl4282/224363115337 눌러보세요! 제주도에서 비가 와도 걱정 없이 신나게 놀 수 있는 곳을 찾는 ...",
+    "url": "https://www.youtube.com/watch?v=nZmxH5Vyw4c",
+    "created_at": "2026-07-31 08:01:08"
+  },
+  {
+    "platform": "YouTube",
+    "post_id": "youtube_wpVY3x4Eabc",
+    "author": "가욤 Kayom in Jeju",
+    "content": "[🌳 천연기념물 신비로운 제주도 계곡! #안덕계곡] COPYRIGHTc2018 ~2026 Kayom. ALL RIGHT RESERVED 영상 및 컨텐츠 무단 캡쳐, 사용 및 재 편집 금지합니다. 종종 블로그 ...",
+    "url": "https://www.youtube.com/watch?v=wpVY3x4Eabc",
+    "created_at": "2026-07-31 08:00:39"
+  },
+  {
     "platform": "Threads",
     "post_id": "threads_Dbb0f7sil1G",
     "author": "jongmin_bangogae",
     "content": "휴가 5일차\n아침 일찍 일어나 우도로 향했다~!\n전기 도ray를 빌렸다 오!?😲 이래서 전기차를 타는것인가!?\n해변 따라 볼꺼 다보고 사진찍고 한바퀴도는데 1시간 걸리더라..\n그래서 밥먹고 한바퀴 또 돌았다..\n다시 돌아와 표선해수욕장에 들렀는데\n크게 놀고싶단 생각이 안들어서 패쓰~!\n자구리담수욕장에 용천수가 뿜어져 나온다길래 이동!\n물이 대박 차웠다!\n여태 여기가 최고인듯! 오늘도 알차게 보내고 일과 끝!\n-\n-\n#제주여행 #캠핑카여행 #세봉이 #우도여행 #자구리담수욕장",
     "url": "https://www.threads.net/@jongmin_bangogae/post/Dbb0f7sil1G",
     "created_at": "2026-07-31 08:00:34"
+  },
+  {
+    "platform": "YouTube",
+    "post_id": "youtube_iivMy-YCj7o",
+    "author": "먹깨비",
+    "content": "[제주 여행을 더 즐겁게 만든 곳 #제주도가볼만한곳 #제주도여행 #제주흑우] 제주 여행에서 가족 모임 장소로 고민이 많으시잖아요. 제주흑우는 4인부터 30인까지 개별룸으로 수용해서 가족식사부터 상견례까지 ...",
+    "url": "https://www.youtube.com/watch?v=iivMy-YCj7o",
+    "created_at": "2026-07-31 07:52:26"
   },
   {
     "platform": "Naver Cafe",
@@ -3928,6 +4512,30 @@
     "created_at": "2026-07-31 07:49:50"
   },
   {
+    "platform": "YouTube",
+    "post_id": "youtube_Xrq2z9vdfRM",
+    "author": "geoTRAVEL TV",
+    "content": "[좁은 문을 지나.. #koreatravel #koreatrip #제주도가볼만한곳 #jejutrip #제주서쪽여행 #제주서부여행 #jejutravel #제주여행]",
+    "url": "https://www.youtube.com/watch?v=Xrq2z9vdfRM",
+    "created_at": "2026-07-31 07:45:24"
+  },
+  {
+    "platform": "YouTube",
+    "post_id": "youtube_jVhIyWQjrik",
+    "author": "푸드어드바이저",
+    "content": "[이 맛을 위해 제주를 찾는다 #제주여행 #제주도맛집 #제주흑우] 제주에서 먹었던 흑우의 식감이 아직도 잊혀지지 않는대요. 90일 드라이에이징한 숙성 흑우를 천일염에 찍어 먹는 순간, 정말 고소한 ...",
+    "url": "https://www.youtube.com/watch?v=jVhIyWQjrik",
+    "created_at": "2026-07-31 07:36:54"
+  },
+  {
+    "platform": "YouTube",
+    "post_id": "youtube_2b9m-I3_hdc",
+    "author": "버터썬",
+    "content": "[더울땐 키즈카페가 진리 #제주여행 #제주도여행 #키즈카페 #아르떼 #제주여행지추천 #제주여행추천 #제주여행코스 #제주도 #제주]",
+    "url": "https://www.youtube.com/watch?v=2b9m-I3_hdc",
+    "created_at": "2026-07-31 07:36:46"
+  },
+  {
     "platform": "Threads",
     "post_id": "threads_DbbxTiMExLZ",
     "author": "jeju__250322",
@@ -3974,6 +4582,14 @@
     "content": "[언더 위 갤러리 힐링하는 중] 언더 위 갤러리 힐링하는 중 #제주 #제주데이코스 #제주바다 #힐링여행 #제주공항근처 #제주실내 #제주실내체험 #제주가볼만한곳 ...",
     "url": "https://www.youtube.com/watch?v=Vs9SG2IZG54",
     "created_at": "2026-07-31 07:13:03"
+  },
+  {
+    "platform": "YouTube",
+    "post_id": "youtube_gGm3P2jBP00",
+    "author": "구독자 500명 만들기 프로젝트.",
+    "content": "[#kpop #tour #travel #여행 #트로트 #노래 #미스터트롯2 #제주여행 #제주 #음악 #korean #나훈아 #테스형 #주식 #시황 #격언 #명언 #급등주]",
+    "url": "https://www.youtube.com/watch?v=gGm3P2jBP00",
+    "created_at": "2026-07-31 07:08:01"
   },
   {
     "platform": "YouTube",
@@ -4110,6 +4726,14 @@
     "content": "쇠소깍이랑 가까워 \n바다산책+카약 즐기기 좋구,\n주변에 카페와 맛집도 많아🤍",
     "url": "https://www.threads.net/@jeju_hahyoil/post/DbbnnsvEx-L",
     "created_at": "2026-07-31 06:08:02"
+  },
+  {
+    "platform": "YouTube",
+    "post_id": "youtube_OPUgLp-QLx8",
+    "author": "동네청년",
+    "content": "[제주공항근처맛집 공항 가기 전에 안 먹으면 후회합니다 #제주맛집 #제주여행 #보양식] 공항 가기 전에 꼭 들러야 할 맛집을 소개해드릴게요. 제주흑우 레스토랑은 개별룸에서 프라이빗하게 식사할 수 있어서 정말 특별한 ...",
+    "url": "https://www.youtube.com/watch?v=OPUgLp-QLx8",
+    "created_at": "2026-07-31 06:01:35"
   },
   {
     "platform": "YouTube",
@@ -15374,629 +15998,5 @@
     "content": "반려견 풀어둘 수 있는 개별마당\n복층 X, 침실 2개\n가격 100만원 이하",
     "url": "https://www.threads.net/@60__j_/post/DbXnv8UlLdt",
     "created_at": "2026-07-29 16:52:12"
-  },
-  {
-    "platform": "Instagram",
-    "post_id": "instagram_DbXnD41vK7J",
-    "author": "victoryjeju",
-    "content": "도심 속 초록빛 휴식처, 한라수목원의 여름 🌿\n\n빽빽하게 우거진 나무 그늘 아래\n바람 소리와 새소리 들으며 \n걷기만 해도 힐링되는 한라수목원의 \n여름 풍경을 담아왔습니다.\n\n📍 제주 제주시 수목원길 72\n입장료: 무료\n🚘주차요금: 유료 \n(최초 10분 무료 / 승용차 기준 기본 2시간 1,000원, 초과 15분당 500원)\n✔️운영시간:\n👉🏻수목원 야외: 상시 개방 (일출~일몰)\n✔️자연생태체험학습관\n09:00 ~ 18:00 (입장 마감 17:30)\n\n🌿 여름철 추천 관람 포인트\n👉🏻죽림원 (대나무 숲길): 시원한 바람 소리와 함께 빽빽한 대나무 숲에서 청량한 사진을 남기기 좋은 포인트\n\n👉🏻교목원 & 자생희귀특산식물원: 제주의 다양한 자생 식물과 우거진 나무 그늘을 따라 걷기 좋은 산책로\n\n👉🏻자연생태체험학습관: 여름철 더위를 잠시 식히며 제주의 자연 생태를 배울 수 있는 실내 공간\n\n👉🏻그늘 산책 코스: 여름철에는 햇빛이 강하므로 죽림원과 숲길 산책로 위주로 동선을 잡으시면 훨씬 시원하게 산책할 수 있습니다\n\n👉🏻해충 기피제 준비: 풀숲 산책로가 많아 모기나 벌레가 있을 수 있으니 해충 기피제나 긴 옷을 챙기시면 좋습니다\n\n제주의 여름숲길을 담아가세요💙🩵\n“제주특별자치도 도민기자단 활동으로 제작된 콘텐츠입니다.”\n\n#제주숲길 #제주도여행 #한라수목원 #제주무료스팟 #제주가볼만한곳",
-    "url": "https://www.instagram.com/p/DbXnD41vK7J/",
-    "created_at": "2026-07-29 16:51:52"
-  },
-  {
-    "platform": "YouTube",
-    "post_id": "youtube_jwbmEvEyJN4",
-    "author": "지금 맛보러 갑니다.",
-    "content": "[제주의 밤이 깊어지는 맛 #제주맛집 #제주도여행 #제주흑우] 제주공항에서 20분 거리에 있는 이 맛집은 90일 건조숙성 흑우를 내놓아요. 처음엔 반신반의했는데 정말 첫 입에 확 달라더라고요.",
-    "url": "https://www.youtube.com/watch?v=jwbmEvEyJN4",
-    "created_at": "2026-07-29 16:46:55"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_seogwipoguesthouse2_669374",
-    "author": "✅️제한라 제주도 한달살기 제주 보름살이 숙소 여행맛집렌트카 멤버",
-    "content": "[제주도 한달살기 숙소 구해요] 렌트카, 제주 가볼만한곳 1. 제주도 한달살기 숙소 지역 : 위치 상관없습니다. 2. 제주도 한달살기 숙소 사용인원/날짜 : 최대한 빠르게 한달 혹은 그 이상입니다. 남자 한명입니다. 3. 제주도 한달살기 숙소 원하는 숙소형태...",
-    "url": "https://cafe.naver.com/seogwipoguesthouse2/669374",
-    "created_at": "2026-07-29 16:42:58"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_komusincafe_5214158",
-    "author": "곰신카페(고무신)-육군,공군,해군,해병대,군인,군대,훈련소 카페 멤버",
-    "content": "[[첫 번째 휴가] 반 년만의 신위휴ㅣ집데이트ㅣ모아나ㅣ바다ㅣ칵테일바ㅣ울....] 28] 여러분 저 됐어요 됐다구요 입대 반 년 만에 신위휴 나와서 꾸나 볼... 이후에 제주도 한달살이 하며 맨날 놀고먹고 했더니 꽤 빨리... 한 달 간 연락 제대로 못 해서(제가 진짜 열심히 놀았거든요) 그동안 못 한...",
-    "url": "https://cafe.naver.com/komusincafe/5214158",
-    "created_at": "2026-07-29 16:42:58"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_nakmin733212_3351",
-    "author": "장달수의 한국학카페 멤버",
-    "content": "[송사(宋史) 권284 열전 제43陳堯佐 (진요좌)] 가 되었다. 촉이 평정되자 隴城(롱성)주부로 임명되었고, 거듭 승진하여 櫟陽(력양)령이 되었다. 현의 정백거(鄭白渠)가 이웃 고을의 강족(强族)에게 점거되어 있었는데, 성화가 막아놓은 것을 모두 제거하여 수리(水利)가...",
-    "url": "https://cafe.naver.com/nakmin733212/3351",
-    "created_at": "2026-07-29 16:42:58"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_happyibook_6217170",
-    "author": "다낭 도깨비 - 베트남 다낭자유여행 ,다낭여행,맛집,호텔리조트 멤버",
-    "content": "[부산 서면 맛집 반해버린 BEST1] 먹으러 갈 수 있어 좋답니다. 민들레부엌 주소 : 부산 부산진구... 할만한 곳 정말 많다고 생각해요. 부산 사람으로서 자부심이 있을만큼... 듀록 외에 제주 흑돼지와 통보리 숙성도 있는데 사실 일반인은 큰 차이를 몰라...",
-    "url": "https://cafe.naver.com/happyibook/6217170",
-    "created_at": "2026-07-29 16:42:58"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_joonggonara_1132558328",
-    "author": "중고나라 멤버",
-    "content": "[(특가) 7,8월 홍천 소노벨/ 소노펠리체,빌리지 (오션월드포함) 양도] ● 셀러회원 인증 여행지기11 입니다..\"믿고 예약하셔도 됩니다\" ● 홍천 소노펠리체 테라스60평 단독형... 롯데속초,부여,김해/제주아트빌라스/ 설해원/소노펠리체델피노,홍천/쏠비치양양,삼척,진도,남해...",
-    "url": "https://cafe.naver.com/joonggonara/1132558328",
-    "created_at": "2026-07-29 16:42:48"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_dfdfwe_236593",
-    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
-    "content": "[제주 에벤에셀 (함덕,풀빌라,패키기여행) 할인 받고 예약하는 방법!] 오늘은 제주 에벤에셀 비용에 대해 소개하는 시간을 가져보도록 하겠습니다. 제주 에벤에셀 비용에 대해 궁금증을 갖고 계신 분들이 제 글을 읽고... 제주 에벤에셀 자동할인 링크! [클릭] 제주도 에벤에셀은 독특한 개성과...",
-    "url": "https://cafe.naver.com/dfdfwe/236593",
-    "created_at": "2026-07-29 16:42:48"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_fobn_138401",
-    "author": "다낭 아지트 루나 - 다낭맛집, 다낭마사지, 호이안, 다낭여행 멤버",
-    "content": "[국내)제주 성미가든] 제주 교래에 위치한 성미가든입니다 교래는 닭이 유명한곳이에요.교래는 토종닭 특구지역입니다 그래서 닭음식점들이 많아요 성미가든은 닭샤브샤브.닭백숙.녹두죽 코스로 나오는곳입니다 저는 샤브샤브는 그냥요...",
-    "url": "https://cafe.naver.com/fobn/138401",
-    "created_at": "2026-07-29 16:42:48"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_tybwondergirl5_95822",
-    "author": "베트남 디고-다낭나트랑자유여행,맛집,호텔,리조트,마사지,골프 멤버",
-    "content": "[초강력슈퍼태풍돌핀북상] 이후 제주와 한반도에 직접적인 영향을 미칠지 기상 당국과 국내외 수치예보 모델의 관심이 집중되고 있다고 하네요!! 현재 중심기압 950hPa(헥토파스칼), 중심 최대풍속 초속 43m, 강풍반경 320㎞의 '강도 3' 세력을...",
-    "url": "https://cafe.naver.com/tybwondergirl5/95822",
-    "created_at": "2026-07-29 16:42:48"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_minecraftpe_3934606",
-    "author": "푸꾸옥 고스트 - 베트남푸꾸옥 자유여행,호텔리조트,항공권,맛집 멤버",
-    "content": "[7월 2일 제주항공 지연보상 받으신분 계신가요?(고객센터 통화해본 결과 공....] 그 카톡으로 보낸다는 절차가 얼마나 거창한지, 아님 담당자가 휴가라도 간건지 아무 연락이 없네요.. 혹시 저만 이런건가요? 제주항공 지연보상 받으신분 계시면 어떻게 받으셨느지 저한테도 좀 알려주세요..",
-    "url": "https://cafe.naver.com/minecraftpe/3934606",
-    "created_at": "2026-07-29 16:42:48"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_woogn_27273",
-    "author": "참한(이)만남 멤버",
-    "content": "[부산! 가성비 미쳤다.. BTS 공연후 부산에 눌러앉는 외국인들ㅣ부산으로 세....] BTS 공연후 부산에 눌러앉는 외국인들ㅣ부산으로 세계여행한다 AI 해외감동오픈 구독자 2.63만명... 공연이 끝나면 서울이나 제주로 떠날 줄 알았지만, 예상치 못한 일이 벌어졌습니다. 외국인들이...",
-    "url": "https://cafe.naver.com/woogn/27273",
-    "created_at": "2026-07-29 16:42:48"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_no1cheonan_4312671",
-    "author": "천안아산줌마렐라 [천안.아산 대표지역카페, 정보.교육.부동산] 멤버",
-    "content": "[8살 초6과 한달살이 추천해주세요] 4~6월 가요 해외는 귀찮고 제주는 다녀왔어요 경주 서울밖에 생각 안나는데..3~4주 알차게 보낼 지역 추천해주세요 천안.아산의 모든정보와 살아가는 이야기가 모여있는 온라인 커뮤니티 [천안아산줌마렐라]",
-    "url": "https://cafe.naver.com/no1cheonan/4312671",
-    "created_at": "2026-07-29 16:42:48"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_woljeongquicksurf_31268",
-    "author": "제주도 월정리 서핑 월정퀵서프 멤버",
-    "content": "[[제주도 월정리 서핑] 월정퀵서프 07월 29일 3시 강습] 월정퀵서프에서 함께 만든 특별한 제주 여행의 추억을 확인해 보세요. ━━━━━━━━━━━━━━ 사진·영상 이용 안내 강습에 참여하신 고객님께서는 본 게시물의 사진과 영상을 자유롭게 확인하고 개인...",
-    "url": "https://cafe.naver.com/woljeongquicksurf/31268",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_iautostation_163556",
-    "author": "★제네시스 오너스 GV70,G70,G80,eG80,GV80,G90 풀체인지 동호회 멤버",
-    "content": "[신라스테이 제주 공항 이달의 아고다 할인정보 공유해요] 여행은 언제나 새로운 경험과 추억을 만들어주죠! 특히 제주도는 그 어느 곳과도 다른 아름다운 자연 풍경과... 이번 제주 여행을 특별하게 만들어줄 '신라스테이 제주 공항'에서의 숙박을 기대해봐요. ✈✈️ 안녕하세요!...",
-    "url": "https://cafe.naver.com/iautostation/163556",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_bluegrayvk3gm_2007",
-    "author": "나는제주다_제주 살이, 여행, 맛집, 숙소, 관광,체험,생활정보 멤버",
-    "content": "[제주 미니단호박 보우짱 이번엔 전자레인지와 에어프라이어 에그슬럿 요리....] 미니 단호박 보우짱 에어프라이기 전자레인지를 활용한 에그슬럿 (초보가 직접 선보입니다 ㅎㅎ) 달달하게 후숙잘된 미니 단호박은 꼭지를 보면 알 수 있습니다 포슬포슬하고 달콤한 단호박 에그슬럿은 에어프라이어로...",
-    "url": "https://cafe.naver.com/bluegrayvk3gm/2007",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_880507_32726",
-    "author": "[아이공부] 밀크티 엠베스트 엘리하이 온리원 무료체험 가입혜택 멤버",
-    "content": "[2026년 초등학교 여름방학 추천 여행지 TOP13 (천재교과서 밀크티가 알려주는 ....] 2026년 초등학교 여름방학 추천 여행지 TOP13 (천재교과서 밀크티가 알려주는 학교 교과서 속 역사 체험)... 초3, 초5 추천 전북 익산시 익산 교도소세트장 초3, 초6 추천 제주 서귀포시 제주도 성산일출봉 초4, 초5 추천",
-    "url": "https://cafe.naver.com/880507/32726",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_hyjnavercom_268237",
-    "author": "[멘또] 제주도 한달살기 숙소 비용 제주 보름살기 한달살이 탁송 멤버",
-    "content": "[가입인사] 한달살기 계획중이에요 가입인사 드립니다",
-    "url": "https://cafe.naver.com/hyjnavercom/268237",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_sdadaae_53546",
-    "author": "맛슐랭코리아 멤버",
-    "content": "[현지 제주도 맛집 저장] 제주 여행 일정 중 부모님과 함께 조용히 식사할 곳을 찾다가 제주도 맛집으로 소문난 제주흑우를 예약하게 됐어요. 공항에서 멀지 않아 여행 첫날 일정으로도, 마지막 날 일정으로도 부담 없이 다녀올 수 있는...",
-    "url": "https://cafe.naver.com/sdadaae/53546",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_myguesthouse_1018880",
-    "author": "제주도 게스트하우스 여행자모임 - 니잘못이아니야 멤버",
-    "content": "[신입입니다] 앞으로 잘부탁드립니다",
-    "url": "https://cafe.naver.com/myguesthouse/1018880",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_dfdfwe_236559",
-    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
-    "content": "[베스트웨스턴 제주 (공항근처,조식,숙소) 할인 받고 예약하는 방법!] 또한, 이곳의 레스토랑은 제주도의 신선한 재료를 활용한 다양한 요리를 제공하여 미식을 즐기는 데 최적의 장소입니다. 지역 특산물과 함께 제주 바다의 신선한 해산물을 활용한 메뉴는 여행의 또 다른 즐거움을...",
-    "url": "https://cafe.naver.com/dfdfwe/236559",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_smartbargain_1873869",
-    "author": "스마트바겐 명품 핫딜 해외직구 세일 정보 샤넬 프라다 루이비통 멤버",
-    "content": "[☀️ 스마트바겐 썸머룩 이벤트 먹고 즐기고 추억 남기기 착용샷도 찰칵] 기간 2026.7.29(화) ~ 8.31(일) 이렇게 참여하세요 ① 참여 — 착용샷 3장 + #착용제품 태그 남기기 ✈️여행왔어요/후기게시판 < 【여행지】 제주도 【숙소】 신라스테이 【사진/리뷰】 착용템 사진 3장 【착용템】 #가니...",
-    "url": "https://cafe.naver.com/smartbargain/1873869",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_ducksolove_2933",
-    "author": "어디가멩, 제주 멤버",
-    "content": "[운동을 갈지말지~] 퇴근하고 운동 갈지 그냥 쉴지 아직도 고민 중입니다.",
-    "url": "https://cafe.naver.com/ducksolove/2933",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_dfdfwe_236540",
-    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
-    "content": "[휘닉스 제주 섭지코지 (올인클루시브,가격) 할인 받고 예약하는 방법!] [클릭] 휘닉스 제주 섭지코지에서의 특별한 경험 휘닉스 제주 섭지코지는 제주도의 아름다운 자연과 편안한... 특히 섭지코지의 푸른 바다와 독특한 해안선은 많은 사진작가와 여행자들에게 사랑받는 장소입니다. 자연을...",
-    "url": "https://cafe.naver.com/dfdfwe/236540",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_jhs7755_32967",
-    "author": "예뻐지는 다이어트 생활 예다생 이너뷰티/식단/운동/헬스/ 멤버",
-    "content": "[여행후기에 코디 조언좀요~] 이번에 3박4일 제주도 여행가는데 여행후기에 보니까 날씨가 좀 변덕스러워서 고민이에요~ 옷 뭐 입어야 딱 좋을까요? 걍 가벼운 옷 위주가 나을까용? 혹시 제주 여행후기 있으신 분 코디팁 공유좀 해주세요ㅎㅎ",
-    "url": "https://cafe.naver.com/jhs7755/32967",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_hyjnavercom_268236",
-    "author": "[멘또] 제주도 한달살기 숙소 비용 제주 보름살기 한달살이 탁송 멤버",
-    "content": "[가입인사 드려요] 앞으로도 잘부탁드립니다.",
-    "url": "https://cafe.naver.com/hyjnavercom/268236",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_ducksolove_2932",
-    "author": "어디가멩, 제주 멤버",
-    "content": "[햇빛 장난아니네요] 자외선은 정말....피부 적이라는데ㅠㅠㅠ 햇빛이 장난아니라서 요즘 항상 썬크림을 담뿍 담뿍 바르고 있네요. 담뿍 담뿍 하니까 갑자기 햄부기도 먹고 싶어요",
-    "url": "https://cafe.naver.com/ducksolove/2932",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_zerotool_1703",
-    "author": "착한탁송 : 자동차탁송,제주도,셀프카,카캐리어,화물차,차량탁송 멤버",
-    "content": "[[서울, 구리, 하남, 광명 제주도 탁송] 비행기로 이동하고 차는 제주에서 편....] 서울, 구리, 하남, 광명 제주도 탁송 비행기로 이동하고 내 차는 제주에서 편하게 받으세요 안녕하세요... ✔아이와 함께 이동하는 가족 어린 자녀가 있는 가정은 카시트, 유모차, 여행용 가방 등 챙겨야 할 짐이...",
-    "url": "https://cafe.naver.com/zerotool/1703",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_seogwipoguesthouse2_669379",
-    "author": "✅️제한라 제주도 한달살기 제주 보름살이 숙소 여행맛집렌트카 멤버",
-    "content": "[아이랑 제주 체험활동/서귀포 숲프로그램 제주 한달살기 제주도여행 8월 가....] 제한라입니다 제주도 맛집 제주렌트카 와 여행코스 가볼만한곳 까지 전부다 저장을 해서 행복한 한달살기... 프로그램입니다 제주도 여행 하면서 서귀포 에서 한달살기 숙소예약후 이렇게 멋진 프로그램을 아이랑 동반...",
-    "url": "https://cafe.naver.com/seogwipoguesthouse2/669379",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_dfdfwe_236512",
-    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
-    "content": "[제주 코업시티 성산 (가성비,일출봉,위치,가격) 할인 받고 예약하는 방법!] [클릭] 제주 코업시티 성산문단에 대해 알아보겠습니다. 이 장소는 제주도의 아름다운 자연과 현대적인... 제주 해산물을 활용한 많은 요리도 즐길 수 있어 미식 여행을 원하는 사람들에게 최적입니다. 셋째, 가족 단위...",
-    "url": "https://cafe.naver.com/dfdfwe/236512",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_myguesthouse_1018879",
-    "author": "제주도 게스트하우스 여행자모임 - 니잘못이아니야 멤버",
-    "content": "[제주 보름 살기] 보름 살기도 게하 스탭 가능할까요?",
-    "url": "https://cafe.naver.com/myguesthouse/1018879",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_psjpt_877172",
-    "author": "물작메, 물리치료에 관한 작은 메모장, 물리치료, 물리치료사 멤버",
-    "content": "[안녕하세요] => 일반인입니다 ■ 질문 2. 간단한 본인 소개 및 인사 1) 가장 기억에 남는 여행지는? => 제주도 2) 올해 회원님의 목표는 무엇인가요? => 물치과 대학합격 3) 물리치료사이시라면, 관심 분야는 무엇인가요? => X 감사합니다.",
-    "url": "https://cafe.naver.com/psjpt/877172",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_myguesthouse_1018878",
-    "author": "제주도 게스트하우스 여행자모임 - 니잘못이아니야 멤버",
-    "content": "[안녕하세요] 잘부탁드립니다!",
-    "url": "https://cafe.naver.com/myguesthouse/1018878",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_ungsangjang_861129",
-    "author": "부산 경남 맘스홀릭 육아 생활정보 체험단 이벤트 중고거래 멤버",
-    "content": "[제주 목장카페 밭디 다녀왔습니다] 아직도 제주도에여 ㅋㅋㅋㅋㅋ 웃김. 목장에서 말에게 먹이도 줄수있고요. 승마도 가능한 분위기.좋은 목장카페를 다녀왔어요. 승마체험도 하고싶었지만요. 점심을 예약을 해 놓았던터라..ㅋ 급하게 당근먹이주고ㅋㅋㅋ...",
-    "url": "https://cafe.naver.com/ungsangjang/861129",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_ducksolove_2931",
-    "author": "어디가멩, 제주 멤버",
-    "content": "[날씨가 이상해요] 요즘 날씨가 너무 더워서 밖에 나가기가 무섭네요.",
-    "url": "https://cafe.naver.com/ducksolove/2931",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_ungsangjang_861125",
-    "author": "부산 경남 맘스홀릭 육아 생활정보 체험단 이벤트 중고거래 멤버",
-    "content": "[제13호 태풍 돌핀 현재 위치와 예상 경로, 한반도 영향 가능성은?] 휴가철 해안가 방문객 주의사항 본격적인 여름 휴가철을 맞아 제주도와 남해안, 동해안 등 해안 지역을 방문할 예정이라면 태풍의 직접 영향 여부와 관계없이 해상 기상정보를 확인해야 합니다. 태풍이 먼 해상에...",
-    "url": "https://cafe.naver.com/ungsangjang/861125",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_jejutip_2658472",
-    "author": "[느영나영] 제주도여행 대표카페 제주맛집 렌터카 숙소 여행지도 멤버",
-    "content": "[큰딸 임하나생일을 축하하면서 출석해요] 느영나영 네이버 제주도 대표카페에서 행복한 하루 보내세요 !! < 다른 회원님들께 인사하기 > ☞ 오늘 하루 느영나영 회원님들 모두 ___가족은 평안한가요?________ !! < 말머리를 선택해 주세요. 미션 내용이 들어 있어요...",
-    "url": "https://cafe.naver.com/jejutip/2658472",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_myguesthouse_1018877",
-    "author": "제주도 게스트하우스 여행자모임 - 니잘못이아니야 멤버",
-    "content": "[한달살이] 대학교 졸업을 앞두고 제주도 한달살이 관심있어 가입했습니다. 잘 부탁 드립니다 ^^",
-    "url": "https://cafe.naver.com/myguesthouse/1018877",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_jejutip_2658471",
-    "author": "[느영나영] 제주도여행 대표카페 제주맛집 렌터카 숙소 여행지도 멤버",
-    "content": "[연박 2박 VS 1박씩 방 옮기기] 운좋게 신협 연수원 투룸타입을 예약했는데 객실 타입이 달라서 1박 하고 다음날 11시 체크아웃하고 다시 3시에 다른 방으로 체크인 해야해요 신협이 총 10만원 정도 더 저렴하네요 1. 다른 리조트 연박 2박(원룸형) 2....",
-    "url": "https://cafe.naver.com/jejutip/2658471",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_ducksolove_2930",
-    "author": "어디가멩, 제주 멤버",
-    "content": "[이제 곧 마무리~] 오늘 하루도 순식간에 지나갔네요. 다들 퇴근 준비 잘하시고 즐거운 저녁되세요ㅎㅎ",
-    "url": "https://cafe.naver.com/ducksolove/2930",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_bluegrayfctas_31",
-    "author": "다이어트 하는 공간 멤버",
-    "content": "[제주도요가 다이어트 정체기에 괜찮을까요] 요즘 체중이 그대로라 제주도요가를 알아보고 있어요ㅠㅠ 여행 가서도 운동을 해보면 마음을 다잡는 데 괜찮을 것 같았는데 막상 예약하려니 고민이 많네요 식단은 저녁 탄수화물을 줄이고 있는데 밤만 되면 군것질 생각이...",
-    "url": "https://cafe.naver.com/bluegrayfctas/31",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_myguesthouse_1018875",
-    "author": "제주도 게스트하우스 여행자모임 - 니잘못이아니야 멤버",
-    "content": "[안녕하세요] 안녕하세요! 잘 부탁 드립니다",
-    "url": "https://cafe.naver.com/myguesthouse/1018875",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_master31_727",
-    "author": "개인택시·개인화물 시세와 허가의 모든것 (31년 경력 전문가) 멤버",
-    "content": "[[정보] 여름 휴가 극상수기 동해안 초장거리 대목! 속초 '썸머페스티벌' 운....] 피서 여행을 떠나는 관광객 인파가 대거 집중될 것으로 예상됩니다. 강원 영동 북부 및 속초 방면 장거리... 휴가 여행을 떠나는 가족 및 연인 승객들의 초장거리 콜 수요를 주목해 보세요. 서울양양고속도로 양양 IC 및...",
-    "url": "https://cafe.naver.com/master31/727",
-    "created_at": "2026-07-29 16:42:39"
-  },
-  {
-    "platform": "Threads",
-    "post_id": "threads_DbXmSFGif4m",
-    "author": "blue0799",
-    "content": "제주도 여행 카페 추천\n실내도 너무 깔끔!\n그런데 위치가 예술이야\n앞에는 제주 어촌마을 포구 그런데 구름다리가 있는 2중 포구여서 더 예뻐\n옆에는 제주에 얼마 없는 사람만 다닐수 있는 돌담 올레18코스길 \n뒤에는 야자수 🌴 돌담 잔디마당 \n그래서 오늘 아침 영상을 올려볼께\n후회하지 않을 카페 추천이야!",
-    "url": "https://www.threads.net/@blue0799/post/DbXmSFGif4m",
-    "created_at": "2026-07-29 16:39:42"
-  },
-  {
-    "platform": "Threads",
-    "post_id": "threads_DbXmEZfknL4",
-    "author": "k.ryu.gyeong",
-    "content": "아직도 제주여행 3일차ㅋ\n매년 여름마다 오지만,\n올때 마다 너무 예쁜 제주🩵\n.\n.\n.\n#금능해변 \n#제주여행\n#휴가중\n#방학중\n#에메랄드",
-    "url": "https://www.threads.net/@k.ryu.gyeong/post/DbXmEZfknL4",
-    "created_at": "2026-07-29 16:37:31"
-  },
-  {
-    "platform": "Instagram",
-    "post_id": "instagram_DbXkz2hxeDo",
-    "author": "taekstory",
-    "content": "광고 다음 제주도 여행 숙소로 서칭하다가 발견한 위치 깡패 숙소! 바로 유니호텔 제주인데, 가성비가 너무 좋아서 제 위시리스트에 저장해 둔 곳이라 공유해 드려요.\n애월 해안도로 바로 앞에 있어서 탁 트인 바다 바라보며 힐링하기 딱 좋은 위치예요. 게다가 애월에서 핫한 노을리 카페 바로 옆이라 동선도 대박인데, 유니호텔과 제휴된 노을리 카페와 코시롱 흑돼지 식당을 할인가로 이용할 수 있다는 게 진짜 매력적이더라고요!\n마침 이 제주 호텔을 포함해서 수많은 인기 숙소들이 현재 Trip.com에서 특별 혜택으로 오픈되어 있으니 휴가 준비 중이시라면 지금 확인해 보세요!\n🎁 전용 페이지 접속 방법 (택 1)\n1️⃣ 제 프로필 링크 클릭\n2️⃣ Trip.com 앱 검색창에 take26 입력\n🔥 팔로워 전용 추가 할인쿠폰\nTrip.com 앱 내 [계정] - [할인 코드] 메뉴에서 전용 코드 #KR99 를 입력하시면 단독 추가 쿠폰이 발급돼요! 경비 절약에 딱이니까 잊지 말고 챙겨두세요.\n*해당 캠페인 페이지 내 탭을 통해 여행 크리에이터를 위한 ‘인플루언서 플래닛’ 프리 트라이얼(무료 숙박 신청)도 참여할 수 있으니 좋은 기회 꼭 잡으시길 바랄게요!\n#travelwithtripcom #tripcom #triptheplanet #제주도여행",
-    "url": "https://www.instagram.com/p/DbXkz2hxeDo/",
-    "created_at": "2026-07-29 16:28:59"
-  },
-  {
-    "platform": "Threads",
-    "post_id": "threads_DbXkXMdibVP",
-    "author": "ranylim",
-    "content": "제주여행만 잡아놓고 호텔 예약 안하는 나를 못 견딘 남편이 호텔 예약해줌 너무 맘에듦 ㅎㅎ",
-    "url": "https://www.threads.net/@ranylim/post/DbXkXMdibVP",
-    "created_at": "2026-07-29 16:22:36"
-  },
-  {
-    "platform": "Threads",
-    "post_id": "threads_DbXkSrYGHgQ",
-    "author": "y2onhwa",
-    "content": "공간마다 역할과 분위기가 달라서\n이곳저곳 구경하는 재미도 있었고\n향기랑 음악까지 너무 좋아버려\n1박만으로는 너무 너무 부족했던 곳\n* 대욕장이 있어 어르신들 모시고 가면\n사랑 듬뿍. 받을 수 있어요 ⊹˚. ♡",
-    "url": "https://www.threads.net/@y2onhwa/post/DbXkSrYGHgQ",
-    "created_at": "2026-07-29 16:21:59"
-  },
-  {
-    "platform": "Threads",
-    "post_id": "threads_DbXkPi4iao4",
-    "author": "stay_mosim",
-    "content": "🌙 제주에서의 하루를 특별하게\n조용히 쉬고, 이야기 나누고,\n우리들만의 시간을 보내기 좋은 공간 😌\n후기랑 사진 보면\n왜 다들 반하는지 바로 알 거에요.",
-    "url": "https://www.threads.net/@stay_mosim/post/DbXkPi4iao4",
-    "created_at": "2026-07-29 16:21:34"
-  },
-  {
-    "platform": "Threads",
-    "post_id": "threads_DbXjFNaiVNY",
-    "author": "kks_kokosing",
-    "content": "| 1h | More",
-    "url": "https://www.threads.net/@kks_kokosing/post/DbXjFNaiVNY",
-    "created_at": "2026-07-29 16:11:25"
-  },
-  {
-    "platform": "Threads",
-    "post_id": "threads_DbXf5n1kw9t",
-    "author": "bobos190720",
-    "content": "| 1h | More",
-    "url": "https://www.threads.net/@bobos190720/post/DbXf5n1kw9t",
-    "created_at": "2026-07-29 15:43:37"
-  },
-  {
-    "platform": "YouTube",
-    "post_id": "youtube_v69YlsRiLeg",
-    "author": "멍때리는 여행기🦥",
-    "content": "[제주여행후  집가는 마지막 바다🧭🏡]",
-    "url": "https://www.youtube.com/watch?v=v69YlsRiLeg",
-    "created_at": "2026-07-29 15:40:23"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_hkct_1139761",
-    "author": "국내여행 커뮤니티［바이트레인］ - 내일로 기차 여행 동행 해외 멤버",
-    "content": "[[끌올] 8/1~2 주말 보령 머드축제, 대천 해수욕장 동행 구해요!] https://open.kakao.com/o/skmKzYFi [가고자 하는 장소를 세곳 이상 작성하시면 여행감성이 맞는 분들 좀 더 쉽게 찾을 수 있어요] . [모집완료 후 완료 / 취소시 취소로 수정 | 게시물은 신용의 자료입니다. 글 삭제시 강등/퇴출]...",
-    "url": "https://cafe.naver.com/hkct/1139761",
-    "created_at": "2026-07-29 15:37:06"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_hkct_1139760",
-    "author": "국내여행 커뮤니티［바이트레인］ - 내일로 기차 여행 동행 해외 멤버",
-    "content": "[8/2 속초나 양양 동행 구해요!] ※ 하고싶은말 : [가고자 하는 장소를 세곳 이상 작성하시면 여행감성이 맞는 분들 좀 더 쉽게 찾을 수 있어요] 제가 30대초반 여자여서 나이대는 20대 중반에서 30대 중반까지, 그리고 비흡연자분으로 구할게요! 불평불만...",
-    "url": "https://cafe.naver.com/hkct/1139760",
-    "created_at": "2026-07-29 15:37:06"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_wedding02_1477833",
-    "author": "부산경남제주결준비*웨딩결혼준비 스드메웨딩홀신혼여행한복예물 멤버",
-    "content": "[7월30일부터8월1일까지 #부산이바지음식 [예당]실물음식이 진열됩니다] 한여름 아이스박스에 포장되어 신선함을 유지한채 잘 배송 됩니다 한번 방문 하시어 구경하시고 선택해 보세요 지난주 대구로 갔던 이바지음식 칭찬글이 왔습니다 흐믓해요 ##부산이바지음식 #부산진시장이바지음식...",
-    "url": "https://cafe.naver.com/wedding02/1477833",
-    "created_at": "2026-07-29 15:37:06"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_dfdfwe_235703",
-    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
-    "content": "[도쿄 항공권 특가 부산 인천 19만 나고야 히로시마 16만 예매 꿀팁 총정리] 일본 여행 준비하면서 가장 먼저 보는 게 항공권입니다. 요즘은 숙소보다 항공권 가격이 먼저 튀는 경우가... 일정은 9월 20일 출발, 9월 23일 귀국 조건이었고, 제주항공 직항으로 198,400원에 보였습니다. 수하물 조건도...",
-    "url": "https://cafe.naver.com/dfdfwe/235703",
-    "created_at": "2026-07-29 15:37:06"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_hyjnavercom_268232",
-    "author": "[멘또] 제주도 한달살기 숙소 비용 제주 보름살기 한달살이 탁송 멤버",
-    "content": "[부모님 한살살기] 부모님이 제주도 한달살기 하고 싶다고 하셔서 이것저것 알아보다가 카페까지 들어오게 되었습니다 :) 우선 숙소 알아보고 있는데..생각보다 어려워 절망모드였는데 ㅎㅎ 좋은 카페 알게 되어 너무 좋아요! 좋은 정보 많이...",
-    "url": "https://cafe.naver.com/hyjnavercom/268232",
-    "created_at": "2026-07-29 15:37:06"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_dfdfwe_235666",
-    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
-    "content": "[제주 씨 앤 (숙소추천,가성비,여행지) 할인 받고 예약하는 방법!] 자연과 해양 액티비티, 그리고 맛있는 음식이 어우러져 특별한 추억을 만들기 위한 완벽한 여행지가 될 것입니다. 제주에서의 기억을 만들고 싶다면 씨 앤문단을 꼭 방문해 보세요. 제주 씨 앤 자동할인 링크! [클릭] 제주 씨...",
-    "url": "https://cafe.naver.com/dfdfwe/235666",
-    "created_at": "2026-07-29 15:37:06"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_dfdfwe_235619",
-    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
-    "content": "[랜딩관 제주신화월드 앤 리조트 (놀이공원,숙박,호캉스) 할인 받고 예약하....] 제주 신화월드와 가까운 관광 명소가 많아 여행 계획을 더욱 풍성하게 만들어 줍니다. 자연을 만끽하며 트레킹을 즐기거나, 지역의 문화와 역사를 탐방하는 일정을 짜보는 것도 좋은 선택이 될 것입니다. 랜딩관...",
-    "url": "https://cafe.naver.com/dfdfwe/235619",
-    "created_at": "2026-07-29 15:37:06"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_happyibook_6217336",
-    "author": "다낭 도깨비 - 베트남 다낭자유여행 ,다낭여행,맛집,호텔리조트 멤버",
-    "content": "[패스트트랙 신청합니다] 예) 비엣젯-VJ875, 제주항공-7C2903, 대한항공-KE457 등 ────────── 2️⃣ 다낭 출국 한국 귀국 ✏️다낭 공항 출발 날짜(도착일X) : ✏️항공편명 : ✏️다낭 공항 출발 시간(24시간형식)...",
-    "url": "https://cafe.naver.com/happyibook/6217336",
-    "created_at": "2026-07-29 15:37:06"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_dfdfwe_235613",
-    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
-    "content": "[제주 노블레스 관광 (뷔페,패키지,가성비) 할인 받고 예약하는 방법!] 노블레스 관광이란 고급스럽고 세련된 여행 경험을 제공하는 것을 의미하며, 제주에서는 이러한 관광 형태가 특히 두드러집니다. 제주 노블레스 관광의 주요 특징 중 하나는 프라이빗한 공간을 제공한다는 점입니다....",
-    "url": "https://cafe.naver.com/dfdfwe/235613",
-    "created_at": "2026-07-29 15:37:06"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_fashionsensation_32421",
-    "author": "성산바다풍경-제주여행,갈치,고등어,조림,구이,맛집,통갈치,해물 멤버",
-    "content": "[출석체크합니다] 출석체크합니다",
-    "url": "https://cafe.naver.com/fashionsensation/32421",
-    "created_at": "2026-07-29 15:37:06"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_fashionsensation_32420",
-    "author": "성산바다풍경-제주여행,갈치,고등어,조림,구이,맛집,통갈치,해물 멤버",
-    "content": "[반갑습니다] 반갑습니다",
-    "url": "https://cafe.naver.com/fashionsensation/32420",
-    "created_at": "2026-07-29 15:37:06"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_sk7955_2236",
-    "author": "송강호제주체험낚시 멤버",
-    "content": "[7_28 화사한 한치낚시 재밌어요!] 가뭄도 이런 가뭄이 없어서 제주에도 물이 없다니 큰일입니다. 그럼에도 불구하고 하늘은 이렇게도 찬란했네요! 너무 예쁜 노을입니다. 우리 조사님들 딱 기분 좋을 만큼 잡으시고 뜨거운 여름밤 보내셨습니다. 쌍걸이도...",
-    "url": "https://cafe.naver.com/sk7955/2236",
-    "created_at": "2026-07-29 15:37:06"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_myguesthouse_1018867",
-    "author": "제주도 게스트하우스 여행자모임 - 니잘못이아니야 멤버",
-    "content": "[안녕하세요!] 안녕하세요 잘부탁드립니다!",
-    "url": "https://cafe.naver.com/myguesthouse/1018867",
-    "created_at": "2026-07-29 15:36:49"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_hyjnavercom_268233",
-    "author": "[멘또] 제주도 한달살기 숙소 비용 제주 보름살기 한달살이 탁송 멤버",
-    "content": "[제주 보름살이 숙소 구합니다] 원하시는 숙소 요청사항 : (구체적으로 적어주세요) - 태교여행이라 깔끔청결 했으면 좋겠습니다 - 침대2개... 펜션 #아기랑 제주한달살기 숙소 #제주도 한달살기 비용 #제주도 여행 #제주도 서귀포 숙소 #제주도 한달살기...",
-    "url": "https://cafe.naver.com/hyjnavercom/268233",
-    "created_at": "2026-07-29 15:36:49"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_dfdfwe_235620",
-    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
-    "content": "[샬롬 제주 (버스정류장,맛집,준비물) 할인 받고 예약하는 방법!] 마지막으로, 제주도는 다양한 액티비티를 통한 즐거움을 선사한다. 산악자전거, 스킨스쿠버, 그리고 트레킹 등 다양한 체험은 제주 여행의 또 다른 즐거움을 제공한다. 아늑한 자연 속에서 마음껏 활동을 즐길 수 있는...",
-    "url": "https://cafe.naver.com/dfdfwe/235620",
-    "created_at": "2026-07-29 15:36:49"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_dfdfwe_235578",
-    "author": "★ 포르쉐 코리아 클럽 [PKC] 카이엔 타이칸 파나메라 911 마칸 멤버",
-    "content": "[제주 스테이 (공항,시내,가볼만한곳) 할인 받고 예약하는 방법!] 각 스테이는 제주만의 분위기를 잘 담아내어 여행자들에게 색다른 매력을 선사합니다. 또한 스테이문단은... 제주 돌담을 따라 산책하거나 현지의 음식 체험을 할 수 있는 기회를 통해 제주를 더욱 깊이 이해하고 잊지 못할...",
-    "url": "https://cafe.naver.com/dfdfwe/235578",
-    "created_at": "2026-07-29 15:36:49"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_myguesthouse_1018864",
-    "author": "제주도 게스트하우스 여행자모임 - 니잘못이아니야 멤버",
-    "content": "[8/3~4 우도 동행 구해요] 여행계획 (tip - 구체적으로 작성하면 더 안심하고 동행할 마음이 듭니다.) 스노클링 하고 같이 저녁 드실분~ 3. 일시/장소 8/3~6 협의 4. 모집인원 30대도 환영, 남자분이 더 편해요 5. 연락방법 채팅 6. 특이사항 사진 잘...",
-    "url": "https://cafe.naver.com/myguesthouse/1018864",
-    "created_at": "2026-07-29 15:36:49"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_idiolle_1881323",
-    "author": "제사모-제주도 대표카페 한달살기 숙소 제주여행 체험단 부동산 멤버",
-    "content": "[오랜만입니다.] 무쟈게 덥지만 출첵 오랜만에,,,,휘리릭 더위 조심하세요",
-    "url": "https://cafe.naver.com/idiolle/1881323",
-    "created_at": "2026-07-29 15:36:49"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_bluetoothkorea_146862",
-    "author": "블스코(블루투스 스피커 코리아) 멤버",
-    "content": "[햇빛이 장난아니네여] 벗어질듯 하네여~~ 젊은 할아버지 할머니를 두어 손녀가 더 좋아라 하나봅니다~~ 얼마나 더 저희랑 놀아 줄진 모르지만 아마사춘기 오면 자주 못 놀겟죠.. 다음주 제주도 가족모임에 델구 가야는디 벌써 햇빛에 벌게져서~~~",
-    "url": "https://cafe.naver.com/bluetoothkorea/146862",
-    "created_at": "2026-07-29 15:36:49"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_postmore_83788",
-    "author": "꿀 통 멤버",
-    "content": "[제주도 여행!] 정말 100년만에 제주도를 놀러가는데 요즘은 숙박 같은 건 다들 어디서 예약하시는지요? 렌트랑 비행기까진 50으로 끊었는데, 이제 숙박이 문제네요... 어우.. 200으로 빠듯하겠는데요? 제주도 물가도 엄청나겠죠?;",
-    "url": "https://cafe.naver.com/postmore/83788",
-    "created_at": "2026-07-29 15:36:49"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_penta100_4749",
-    "author": "펜타힐즈 생활백서 [펜타백서] 멤버",
-    "content": "[제주도의 청명한 하늘사진] 제주도에서 딸, 아들 남매가 볼일이 있어 갔다가 남긴 멋진 장면 이네요~ 제주도는 대구•경북 날씨 처럼 폭염은 아닌가 보네요~ 청명한 하늘과 바다가 참 아름답네요",
-    "url": "https://cafe.naver.com/penta100/4749",
-    "created_at": "2026-07-29 15:36:49"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_sanbon111_34753",
-    "author": "스타일골프｜해외골프·국내골프 특가｜티타임·호텔·차량 예약 멤버",
-    "content": "[시즈오카 후지산 골프여행 추천! 후지산 전망 골프장과 온전한 힐링 라운드] 일본 골프여행을 계획하고 계신다면 가장 먼저 추천드리고 싶은 곳이 바로 시즈오카 후지산... 이용 항공 인천 출발 / 제주항공 / 김해 출발 / 에어부산 실시간 항공요금이 적용되므로 예약 시기에 따라 금액이 달라질...",
-    "url": "https://cafe.naver.com/sanbon111/34753",
-    "created_at": "2026-07-29 15:36:49"
-  },
-  {
-    "platform": "Naver Cafe",
-    "post_id": "naver_cafe_jejudohdskps_15254",
-    "author": "제주도여행한달살기숙소무료홍보회원할인혜택 멤버",
-    "content": "[제주도한달살기숙소 도자기여행 신라토기술병] 갤러리제주도유 #일본도자기#아리타야끼#중국국도자기기#마시꼬#가사마... 삼춘책방#제주풀무질#제주살롱#시인의집#아무튼책방#한뼘책방#책가방... 푸근한곰아저씨#여행가게#북타임#취향의섬북앤띵즈#부키나스트북스...",
-    "url": "https://cafe.naver.com/jejudohdskps/15254",
-    "created_at": "2026-07-29 15:36:49"
-  },
-  {
-    "platform": "YouTube",
-    "post_id": "youtube__FL3TCBb-Ao",
-    "author": "또꾸기",
-    "content": "[제주여행, 여긴 꼭 가세요🦙] 제주에서 가장 행복했던 곳. 알파카에게 직접 먹이를 주고, 블랙노즈양, 토끼 등 다양한 동물들을 가까이에서 만날 수 있었어요.   특히 ...",
-    "url": "https://www.youtube.com/watch?v=_FL3TCBb-Ao",
-    "created_at": "2026-07-29 15:36:31"
-  },
-  {
-    "platform": "Threads",
-    "post_id": "threads_DbXeObBjGi8",
-    "author": "bompooljeju",
-    "content": "#대흘앤 키즈 풀빌라.\n영. 유아.어린이 전용 키즈풀빌라.\n저상침대. 구비\n유아용품 구비.\n젖병소독기. 얼음 정수기. 아기 식탁. 분유포트,젖병세제.\n실내 놀이터\n바베큐 용품 무료 제공.ㄷ\n불멍 가능\n온수비 추가 없음.\n제주도 전 지역 교통 편리.\n잔디 마당.\n추가요금없는 쿨 숙소.l\n최대인원 8명.\n제주 동쪽 숙소\n궁금한 것은 DM.....",
-    "url": "https://www.threads.net/@bompooljeju/post/DbXeObBjGi8",
-    "created_at": "2026-07-29 15:28:59"
-  },
-  {
-    "platform": "Threads",
-    "post_id": "threads_DbXeCJcDHFO",
-    "author": "bompooljeju",
-    "content": "#봄풀 풀빌라\n패밀리침대 / 온돌방. / 일반 침대방\n바베큐 용품 무료 제공.\n캠핑 감성 즐기며 불멍 가능\n대형 수영장과 온수비 무료\n추가요금없는 쿨 숙소\n다인 이용 편리\n방3. 화장실 2\n궁금한것은 DM\n01044508147\n연박할인은 당연.\n추가 할인은 연락줘",
-    "url": "https://www.threads.net/@bompooljeju/post/DbXeCJcDHFO",
-    "created_at": "2026-07-29 15:27:18"
   }
 ]
